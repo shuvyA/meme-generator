@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,40 @@
     <link rel="stylesheet" href="css/editor.css">
     <title>Document</title>
 </head>
-<body>
-    
+
+<body onload="initEditor()">
+    <header>
+
+    </header>
+
+    <main>
+        <h1>editor-canvas</h1>
+        <div class="container">
+
+
+            <canvas id="img-canvas">
+
+            </canvas>
+
+            <input class="txt-user" type="text" placeholder="give a text">
+            <button type="submit" onclick="renderTxt()">send</button>
+
+            
+            <!-- <button type="submit" onclick="renderTxt()">send</button> -->
+            
+            
+        </div>
+    </main>
+
+
+
+    <footer>
+
+    </footer>
     <script src="js/service-gallery.js"></script>
     <script src="js/service-editor.js"></script>
     <script src="js/main-editor.js"></script>
     <script src="js/utilis.js"></script>
 </body>
+
 </html>
