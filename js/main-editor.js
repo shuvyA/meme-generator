@@ -21,7 +21,9 @@ function renderImg() {
     gMeme.txts[0].url = "/img/2.jpg";
 
     var imgUrl = gMeme.txts[0].url;
-
+    
+    canvas.width = 300;
+    canvas.height = 300;
     var ctx = canvas.getContext("2d");
     var img = new Image();
     img.onload = function () {
@@ -31,9 +33,7 @@ function renderImg() {
 }
 
 
-
 function GetTxtFromUser() {
-
     return document.querySelector('.txt-user').value;
 }
 
@@ -50,11 +50,8 @@ function renderTxt() {
     var color = gMeme.txts[0].color;
 
     txtFromUser = GetTxtFromUser();
-    // txtFromUser = document.querySelector('.txt-user').value;
 
     // console.log(txtFromUser);
-    canvas.width = 300;
-    canvas.height = 300;
     
     var ctx = canvas.getContext("2d");
     // ctx.clearRect(10, 50, 0, 0);
