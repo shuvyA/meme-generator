@@ -16,11 +16,7 @@ function renderPhotos() {
 
 function openEditor(imgId) {
     gMeme.selectedImgId = imgId;
-    // window.open("editor.html");
-
-    location.href = "editor.html";
-    // document.querySelector('.img').action="editor.html";
-    // renderImg();
+     initEditor();
 
     console.log(gMeme);
 

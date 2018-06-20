@@ -7,6 +7,7 @@ var gImgs = [
     { id: 4, url: 'img/4.jpg', keywords: ['happy'] },
     { id: 5, url: 'img/5.jpg', keywords: ['happy'] }
 ];
+<<<<<<< HEAD
 
 
 
@@ -36,3 +37,25 @@ var gImgs = [
 
 //     console.log(map);
 // }
+=======
+createKeyWordMap();
+function createKeyWordMap() {
+    var map = {};
+    gImgs.forEach(function(img, idx){
+        var currImgKeywords = img.keywords;
+        map = currImgKeywords.reduce(function(acc, keyWord){
+                if (!acc[keyWord]) {
+                acc[keyWord] = keyWord;
+                acc[keyWord] = [];
+                acc[keyWord].push(img);
+            } else {
+                acc[keyWord].push(img);
+            }
+            return acc;
+        }, {});
+
+    });
+
+    console.log(map);
+}
+>>>>>>> 1d873f64b04a8732b66126fef879e56cb474f543
