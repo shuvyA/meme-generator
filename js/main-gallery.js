@@ -5,7 +5,7 @@ renderPhotos();
 
 function renderPhotos() {
     var strHTMLS = '';
-    gImgs.forEach(function(img, idx){
+    gImgs.forEach(function (img, idx) {
         strHTMLS += `<li class = "photoContainer flex" onclick = "openEditor(${img.id})">
         <img src="${img.url}">
         </li>`
@@ -16,7 +16,12 @@ function renderPhotos() {
 
 function openEditor(imgId) {
     gMeme.selectedImgId = imgId;
-    window.open("editor.html");
+    // window.open("editor.html");
+
+    location.href = "editor.html";
+    // document.querySelector('.img').action="editor.html";
+    // renderImg();
+
     console.log(gMeme);
-    
+
 }

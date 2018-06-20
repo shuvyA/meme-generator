@@ -1,7 +1,7 @@
 'use strict';
 
 var gMeme = {
-    selectedImgId: 5,
+    selectedImgId: '4',
     txts: [
         {
             line: 'I never eat Falafel',

@@ -1,15 +1,17 @@
 'use strict';
 
 
+var idxLine = 0;
 
 var canvas = document.getElementById('img-canvas');
 
 function initEditor() {
 
-    renderImg();
-    // GetTxtFromUser();
 
-    renderTxt();
+    // debugger;
+    renderImg();
+
+    // renderTxt();
 
     console.log('manadfdfasfd');
 
@@ -18,10 +20,14 @@ function initEditor() {
 
 function renderImg() {
 
-    gMeme.txts[0].url = "/img/2.jpg";
 
-    var imgUrl = gMeme.txts[0].url;
-    
+
+    // gMeme.txts[0].url = "/img/2.jpg";
+
+    var currImgIdx = getImgfromSelctId();
+
+    var imgUrl = gImgs[currImgIdx].url;
+
     canvas.width = 300;
     canvas.height = 300;
     var ctx = canvas.getContext("2d");
@@ -39,11 +45,12 @@ function GetTxtFromUser() {
 
 
 function renderReset() {
-    renderImg()
+    renderImg();
+    document.querySelector('.txt-user').value = '';
 
 }
 
-function renderTxt() {
+function renderTxt(idxLine) {
 
     var txtFromUser = gMeme.txts[0].line;
     var fontSize = gMeme.txts[0].size;
@@ -52,7 +59,7 @@ function renderTxt() {
     txtFromUser = GetTxtFromUser();
 
     // console.log(txtFromUser);
-    
+
     var ctx = canvas.getContext("2d");
     // ctx.clearRect(10, 50, 0, 0);
 
@@ -68,6 +75,19 @@ function renderTxt() {
 
 // }
 
+
+function getImgfromSelctId() {
+
+    var res = '';
+    var id = gMeme.selectedImgId;
+    // gImgs[0].id
+
+    gImgs.forEach(function (item, idx) {
+        if (id ===  gImgs[idx].id) res = idx;
+    });
+
+    return res;
+}
 
 
 

@@ -24,8 +24,10 @@
             </canvas>
             <div class="control-box">
                 <input class="txt-user" type="text" placeholder="give a text">
+
+                <button type="submit" onclick="addLine()">Add-Line</button>
                 <button type="submit" onclick="renderTxt()">send</button>
-                <button type="submit" onclick="renderReset()">Reset</button>
+                <button type="submit" onclick="renderReset(idxLine)">Reset</button>
 
 
                 <!-- <button type="submit" onclick="renderTxt()">send</button> -->
@@ -45,9 +47,10 @@
 
     </footer>
     <script src="js/service-gallery.js"></script>
+    <!-- <script src="js/main-gallery.js"></script> -->
     <script src="js/service-editor.js"></script>
-    <script src="js/main-editor.js"></script>
     <script src="js/utilis.js"></script>
+    <script src="js/main-editor.js"></script>
 </body>
 
 </html>
