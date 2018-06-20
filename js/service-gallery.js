@@ -8,9 +8,10 @@ var gImgs = [{id: 1, url: 'img/1.jpg', keywords: ['happy']},
 ];
 createKeyWordMap();
 function createKeyWordMap() {
+    var map = {};
     gImgs.forEach(function(img, idx){
         var currImgKeywords = img.keywords;
-        var map = currImgKeywords.reduce(function(acc, keyWord){
+        map = currImgKeywords.reduce(function(acc, keyWord){
                 if (!acc[keyWord]) {
                 acc[keyWord] = keyWord;
                 acc[keyWord] = [];
@@ -18,7 +19,7 @@ function createKeyWordMap() {
             } else {
                 acc[keyWord].push(img);
             }
-            return acc
+            return acc;
         }, {});
 
     });

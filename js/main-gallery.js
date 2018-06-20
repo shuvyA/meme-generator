@@ -16,7 +16,5 @@ function renderPhotos() {
 
 function openEditor(imgId) {
     gMeme.selectedImgId = imgId;
-    window.open("editor.html");
-    console.log(gMeme);
-    
+    initEditor();
 }
