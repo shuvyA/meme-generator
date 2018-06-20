@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+}
+
+canvas {
+
+
+    width: 650px;
+    /* height: 450; */
+    margin: 0 auto;
+
+}
+
+
+.container {
+    margin: 0 auto;
+   
+}
