@@ -101,9 +101,9 @@ function renderTxt(idxLine) {
         // ctx.font = "15px Comic Sans MS";
 
 
-        ctx.textAlign = "center"; // to do var
+        ctx.textAlign = gMeme.txts[i].align // move right or left or center
         ctx.fillStyle = color;
-        ctx.fillText(txtCanvas, 30, y);
+        ctx.fillText(txtCanvas, 60, y);
     }
 }
 
@@ -145,9 +145,9 @@ function addTxtLine() {
         <input class="txt-user${i}" type="text" oninput="renderTxt(${i})"  value ="" placeholder="give a text">
         <button type="submit" onclick="fontSizeUp(${i})">+</button>
         <button type="submit" onclick="fontSizeDown(${i})">-</button>
-        <button type="submit" onclick="fontCenter(${i})"><i class="fas fa-align-center"></i></button> 
-        <button type="submit" onclick="fontLeft(${i})"><i class="fas fa-align-left"></i></button>
-        <button type="submit" onclick="fontSizeRight(${i})"><i class="fas fa-align-right"></i></button>
+        <button type="submit" onclick="alignText(${i}, 'right')"><i class="fas fa-align-left"></i></button> 
+        <button type="submit" onclick="alignText(${i}, 'center')"><i class="fas fa-align-center"></i></button>
+        <button type="submit" onclick="alignText(${i}, 'left')"><i class="fas fa-align-right"></i></button>
         `;
     }
 
@@ -182,3 +182,83 @@ function colorChange(val,lineIdx){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function alignText(lineIdx, direction) {
+    gMeme.txts[lineIdx].align = direction;
+    renderTxt(lineIdx);
+}
+
+
+
+
+// function fontLeft(lineIdx) {
+
+// }
+
+// function fontSizeRight(lineIdx) {
+
+// }
