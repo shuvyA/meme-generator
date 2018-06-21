@@ -5,7 +5,7 @@ var gMeme = {
     txts: [
         {
             line: 'I never eat Falafel',
-            size: 40,
+            size: 20,
             align: 'left',
             color: 'red'
         }
