@@ -14,11 +14,8 @@ function initEditor() {
 function editorRender() {
 
     var strHtml = `
-    <header>
+    
 
-    </header>
-
-    <main>
         <h1>editor-canvas</h1>
 
 
@@ -41,12 +38,11 @@ function editorRender() {
               </a>
             </div>
         </div>
-    </main>
     
     `;
 {/* <button type="submit" onclick="renderReset(idxLine)">Reset</button> */}
 
-    document.querySelector('body').innerHTML = strHtml;
+    document.querySelector('.editor-canvas').innerHTML = strHtml;
 
 }
 
