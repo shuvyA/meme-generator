@@ -110,7 +110,7 @@ function renderTxt(idxLine) {
 
         var ctx = canvas.getContext("2d");
         ctx.font = `${fontSize} 'Arial'`;
-        ctx.font-size :  fontSize;
+        // ctx.font-size :  fontSize;
         ctx.textAlign = "center"; // to do var
         ctx.fillStyle = color;
         ctx.fillText(txtCanvas, 10, y);
