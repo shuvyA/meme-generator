@@ -1,6 +1,6 @@
 'use strict';
 var gKeyWords = {};
-
+var KEYWORDS = 'key words map';
 var gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: ['happy','smile'] },
     { id: 2, url: 'img/2.jpg', keywords: ['happy', 'nature'] },
@@ -29,18 +29,33 @@ var gImgs = [
 
 
 function createKeyWordMap() {
+    if (gKeyWords) return;
     gImgs.forEach(function(img, idx){
         var currImgKeywords = img.keywords;
         currImgKeywords.forEach(function(keyWord,idx) {
             if (!gKeyWords[keyWord]) {
                 gKeyWords[keyWord] = keyWord;
-                gKeyWords[keyWord] = [];
-                gKeyWords[keyWord].push(img);
+                gKeyWords[keyWord] = {images:[], searched:0};
+                gKeyWords[keyWord].images.push(img);
             }else {
-                gKeyWords[keyWord].push(img);
+                gKeyWords[keyWord].images.push(img);
                 }
         });
     }); 
+    console.log(gKeyWords);
+    
 }
 
+function checkFont(word) {
+    var searchCount = gKeyWords[word].searched;
+    if (!searchCount) return 13;
+    switch(true) {
+        case (searchCount < 10):
+            return 20;
+        case (searchCount < 15):
+            return 30;
+        default:
+            return 40;
+    }
+}
 

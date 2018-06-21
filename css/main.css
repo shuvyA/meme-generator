@@ -19,9 +19,12 @@ body {
     padding: 0;
 }
 
+.wrap {
+    flex-wrap: wrap;
+}
+
 /*header*/
 header {
-    
     width: 100%;
     margin: 0 auto;
     background-color: #323232;
@@ -44,17 +47,20 @@ nav {
     color: white;
 }
 
+.main-menu a:hover {
+    color: #D59480;
+}
 
 /*main*/
 
 main {
     
     width: 100%;
-    
 }
 
-.input-group {
+.search-box {
     justify-content: center;
+    background-color: #323232;
 }
 
 
@@ -73,8 +79,31 @@ main {
 
 .img-container {
     align-items: center;
+    max-width: 300px;
+    justify-self: center;
+}
+
+.wordFilter {
     justify-content: center;
+    margin: 20px 0 20px 0;
+}
+
+.wordFilter li {
+    margin: 0 10px 0 0;
+    cursor: pointer;
+}
+
+/*footer*/
+footer {
+    max-width: 80%;
+    margin: 0 auto;
+}
+.about-container {
+    font-size: 1.5em;
+    margin: 0 0 50px 0;
+}
+.about-container h2, section h2 {
+    text-align: center;
 }
 
 
-   

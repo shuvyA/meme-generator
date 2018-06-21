@@ -1,6 +1,7 @@
 'use strict'
 
 function init() {
+    gKeyWords = loadFromStorage(KEYWORDS);
     renderFilter();
     renderPhotos();
     filterByWord();
@@ -16,6 +17,7 @@ function renderPhotos() {
     });
     var imgContainer = document.querySelector('.the-gallery');
     imgContainer.innerHTML = strHTMLS;
+    cleanSearchBox();
 }
 
 function openEditor(imgId) {
@@ -25,30 +27,40 @@ function openEditor(imgId) {
 
 function renderFilter() {
     createKeyWordMap();
-    var filter = document.querySelector('#inputGroupSelect04');
-    var strHTMLS =`<option selected>All</option>`;
+    var strHTMLS ='';
     for (var kewWord in gKeyWords) {
-        strHTMLS += `<option value = '${kewWord}' oninput="renderPhotos()">${kewWord}</option>`
+        strHTMLS += `<option value = '${kewWord}'>`
     }
-    filter.innerHTML = strHTMLS;
+    document.querySelector('#browsers').innerHTML = strHTMLS;
+    
 }
 
 function filterPhotos() {
-    var keyWord = document.querySelector('.custom-select').value;
-    if (keyWord === 'All') return gImgs;
-    return gKeyWords[keyWord];
+    var keyWord = document.querySelector('.search-box input').value;
+    if (keyWord === '' || keyWord === 'all' || !gKeyWords[keyWord]) return gImgs;
+    gKeyWords[keyWord].searched++;
+    saveToStorage(KEYWORDS, gKeyWords);
+    return gKeyWords[keyWord].images;
 }
 
 function filterByWord() {
     var strHTMLS = '';
     for (var word in gKeyWords) {
-        strHTMLS += `<li style="font-size:${gKeyWords[word].length*3 +20}px;">
+        var font = checkFont(word);
+        strHTMLS += `<li style = font-size:${font}px; onclick="onKeyWord('${word}')">
             ${word}
         </li>`
     }
-    console.log(gKeyWords);
-
     console.log(strHTMLS);
     
     document.querySelector('.wordFilter').innerHTML = strHTMLS;
+}
+
+function cleanSearchBox() {
+    document.querySelector('.search-box input').value = '';
+}
+
+function onKeyWord(keyWord) {
+    document.querySelector('.search-box input').value = keyWord;
+    renderPhotos();
 }
