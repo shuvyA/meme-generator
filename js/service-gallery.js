@@ -30,6 +30,7 @@ var gImgs = [
 
 function createKeyWordMap() {
     if (gKeyWords) return;
+    gKeyWords = {};
     gImgs.forEach(function(img, idx){
         var currImgKeywords = img.keywords;
         currImgKeywords.forEach(function(keyWord,idx) {
