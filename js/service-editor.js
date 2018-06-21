@@ -5,9 +5,22 @@ var gMeme = {
     txts: [
         {
             line: 'I never eat Falafel',
-            size: 20,
+            size: 40,
             align: 'left',
             color: 'red'
         }
     ]
 };
+
+
+
+function getImgfromSelctId() {
+    var res = '';
+    var id = gMeme.selectedImgId;
+
+    gImgs.forEach(function (item, idx) {
+        if (id === gImgs[idx].id) res = idx;
+    });
+    return res;
+}
+
