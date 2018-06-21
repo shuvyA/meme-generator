@@ -6,7 +6,7 @@ var idxLine = 0;
 var canvas = document.getElementById('img-canvas');
 
 function initEditor() {
-
+    editorRender();
 
     // debugger;
     renderImg();
@@ -17,10 +17,42 @@ function initEditor() {
 
 }
 
+function editorRender() {
+
+    var strHtml = `
+    <header>
+
+    </header>
+
+    <main>
+        <h1>editor-canvas</h1>
+
+
+        <div class="container">
+
+            <canvas id="img-canvas">
+            </canvas>
+            <div class="control-box">
+                <input class="txt-user" type="text" placeholder="give a text">
+
+                <button type="submit" onclick="addLine()">Add-Line</button>
+                <button type="submit" onclick="renderTxt()">send</button>
+                <button type="submit" onclick="renderReset(idxLine)">Reset</button>
+
+            </div>
+        </div>
+    </main>
+    
+    `;
+
+document.querySelector('body').innerHTML= strHtml;
+
+}
+
 
 function renderImg() {
 
-
+    var canvas = document.getElementById('img-canvas');
 
     // gMeme.txts[0].url = "/img/2.jpg";
 
@@ -51,6 +83,8 @@ function renderReset() {
 }
 
 function renderTxt(idxLine) {
+
+    var canvas = document.getElementById('img-canvas');
 
     var txtFromUser = gMeme.txts[0].line;
     var fontSize = gMeme.txts[0].size;
