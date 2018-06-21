@@ -8,13 +8,7 @@ var canvas;
 function initEditor() {
     editorRender();
     canvas = document.getElementById('img-canvas');
-    // debugger;
     renderImg();
-
-    // renderTxt();
-
-    console.log('manadfdfasfd');
-
 }
 
 function editorRender() {
@@ -38,8 +32,8 @@ function editorRender() {
                 <button type="submit" onclick="addTxtLine()">Add-Line</button>
                 <button type="submit" onclick="fontSizeUp()">+</button>
                 <button type="submit" onclick="fontSizeDown()">-</button>
-                <button type="submit" onclick="renderReset(idxLine)">Reset</button>
-
+                <input type="color" name="favcolor" value="#ff0000" onchange="colorChange(this.value,${gIdxLine})">
+                
                 
                 <div class="add-line"></div>
                 <a href="#" onclick="downloadImg(this)" download="my-img.jpg" >
@@ -50,6 +44,7 @@ function editorRender() {
     </main>
     
     `;
+{/* <button type="submit" onclick="renderReset(idxLine)">Reset</button> */}
 
     document.querySelector('body').innerHTML = strHtml;
 
@@ -57,9 +52,6 @@ function editorRender() {
 
 
 function renderImg() {
-
-
-
     var currImgIdx = getImgfromSelctId();
 
     var imgUrl = gImgs[currImgIdx].url;
@@ -69,15 +61,8 @@ function renderImg() {
     var ctx = canvas.getContext("2d");
     var img = new Image();
     img.src = imgUrl;
-    // img.onload = function () {
-    //     ctx.drawImage(img, 0, 0, 250, 250);
-    // }
-    ctx.drawImage(img, 0, 0, 250, 250);
 
-
-
-
-
+    ctx.drawImage(img, 0, 0, 300, 300);
 }
 
 
@@ -102,18 +87,23 @@ function renderTxt(idxLine) {
     for (var i = 0; i < gMeme.txts.length; i++) {
         // var cuuTxt = gMeme.txts[i];
         var txtCanvas = gMeme.txts[i].line;
-        var y = 50 + ((i + 1) * 10);
+        var y = 50 + ((i + 1) * 12);
 
 
         var fontSize = gMeme.txts[i].size;
         var color = gMeme.txts[i].color;
 
+
+
         var ctx = canvas.getContext("2d");
-        ctx.font = `${fontSize} 'Arial'`;
-        // ctx.font-size :  fontSize;
+        ctx.font = fontSize + 'px sans-serif';
+        // ctx.font = getFont();
+        // ctx.font = "15px Comic Sans MS";
+
+
         ctx.textAlign = "center"; // to do var
         ctx.fillStyle = color;
-        ctx.fillText(txtCanvas, 10, y);
+        ctx.fillText(txtCanvas, 30, y);
     }
 }
 
@@ -121,8 +111,6 @@ function renderTxt(idxLine) {
 
 
 function downloadImg(elLink) {
-    console.log('down');
-
     var imgContent = canvas.toDataURL('image/jpeg');
     elLink.href = imgContent
 }
@@ -143,20 +131,23 @@ function addTxtLine() {
         align: 'left',
         color: 'red'
     }
-
+//to do fn obj
     cuurTxt.push(obj);
 
     gMeme.txts[gIdxLine].size = '30';
     gMeme.txts[gIdxLine].color = 'blue';
     var prevTxt = '';
 
-// render inputs-->>
+    // render inputs-->>
     for (var i = 1; i <= gIdxLine; i++) {
-        
+
         lineHtml += `
         <input class="txt-user${i}" type="text" oninput="renderTxt(${i})"  value ="" placeholder="give a text">
         <button type="submit" onclick="fontSizeUp(${i})">+</button>
         <button type="submit" onclick="fontSizeDown(${i})">-</button>
+        <button type="submit" onclick="fontCenter(${i})"><i class="fas fa-align-center"></i></button> 
+        <button type="submit" onclick="fontLeft(${i})"><i class="fas fa-align-left"></i></button>
+        <button type="submit" onclick="fontSizeRight(${i})"><i class="fas fa-align-right"></i></button>
         `;
     }
 
@@ -165,7 +156,7 @@ function addTxtLine() {
     // prev value -->
 
     for (var i = 1; i <= gIdxLine; i++) {
-     document.querySelector(`.txt-user${i - 1}`).value = gMeme.txts[i - 1].line;
+        document.querySelector(`.txt-user${i - 1}`).value = gMeme.txts[i - 1].line;
     }
 }
 
@@ -179,6 +170,12 @@ function fontSizeDown(idxLine) {
 function fontSizeUp(idxLine) {
     console.log('up size');
     gMeme.txts[idxLine].size++;
+
+}
+
+function colorChange(val,lineIdx){
+
+    console.log(val);
 
 }
 
