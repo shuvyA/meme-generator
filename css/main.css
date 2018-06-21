@@ -2,9 +2,33 @@
     box-sizing: border-box;
 }
 
+
+@font-face {
+    font-family: eurof;
+    src: url('../fonts/eurofurence/eurof55.ttf');
+}
+
+@font-face {
+    font-family: lato;
+    src: url('../fonts/Lato/Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: Impact;
+    src: url('../fonts/impact/impact.ttf');
+}
+
+@font-face {
+    font-family:Indie_Flower;
+    src: url('../fonts/Indie_Flower/IndieFlower.ttf');
+}
+
+
+
 body {
-    margin: 0 auto;
-    max-width:980px;
+    /* margin: 0 auto; */
+    width: 100%;
+    /* max-width:980px; */
     
 }
 
@@ -26,12 +50,20 @@ body {
 /*header*/
 header {
     width: 100%;
+    height: 150px;
     margin: 0 auto;
     background-color: #323232;
+    
 }
 
 nav {
-    justify-self: flex-end;
+    justify-content: space-around;
+
+}
+nav h1 {
+    color:aliceblue;
+    margin: 0px;
+    font-family: 'Indie_Flower','Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 .main-menu {
@@ -41,9 +73,10 @@ nav {
 }
 
 .main-menu a{
-    font-size: 2em;
+    font-size: 1.5em;
     text-decoration: none;
     color: white;
+    padding: 10px;
 }
 
 .main-menu a:hover {
@@ -53,14 +86,21 @@ nav {
 /*main*/
 
 main {
-    
+    margin: 0 auto;
+    max-width: 980px;
+    /* width: 100%; */
+}
+
+.container{
     width: 100%;
+    /* background-color: aqua; */
 }
 
 .search-box {
     justify-content: center;
-    background-color: #323232;
+    
 }
+
 
 
 .the-gallery {
