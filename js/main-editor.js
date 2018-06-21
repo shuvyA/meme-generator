@@ -101,7 +101,9 @@ function renderTxt(idxLine) {
         // ctx.font = "15px Comic Sans MS";
 
 
-        ctx.textAlign = "center"; // to do var
+        ctx.textAlign = gMeme.txts[i].align; 
+
+        
         ctx.fillStyle = color;
         ctx.fillText(txtCanvas, 30, y);
     }
