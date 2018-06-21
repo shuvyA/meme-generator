@@ -14,11 +14,8 @@ function initEditor() {
 function editorRender() {
 
     var strHtml = `
-    <header>
+    
 
-    </header>
-
-    <main>
         <h1>editor-canvas</h1>
 
 
@@ -41,12 +38,11 @@ function editorRender() {
               </a>
             </div>
         </div>
-    </main>
     
     `;
 {/* <button type="submit" onclick="renderReset(idxLine)">Reset</button> */}
 
-    document.querySelector('body').innerHTML = strHtml;
+    document.querySelector('.editor-canvas').innerHTML = strHtml;
 
 }
 
@@ -101,13 +97,7 @@ function renderTxt(idxLine) {
         // ctx.font = "15px Comic Sans MS";
 
 
-<<<<<<< HEAD
         ctx.textAlign = gMeme.txts[i].align // move right or left or center
-=======
-        ctx.textAlign = gMeme.txts[i].align; 
-
-        
->>>>>>> d537b72db012a6d87bf374c4753cb2ef175f7bf9
         ctx.fillStyle = color;
         ctx.fillText(txtCanvas, 60, y);
     }
