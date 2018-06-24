@@ -13,10 +13,6 @@ function initEditor() {
 function editorRender() {
 
     var strHtml = `
-    
-
-    
-    
     <div class="editor flex space-between flex-wrap">
     <div class="cont-canvas">
             <h2><i class="fas fa-edit"></i> Editor</h2>
@@ -37,9 +33,9 @@ function editorRender() {
             
             </div>
             <div class="line-control">
-            <button class="btn-control" type="submit" onclick="alignText('end')"><i class="fas fa-align-left"></i></button> 
+            <button class="btn-control" type="submit" onclick="alignText('start')"><i class="fas fa-align-left"></i></button> 
             <button class="btn-control" type="submit" onclick="alignText('center')"><i class="fas fa-align-center"></i></button>
-            <button class="btn-control" type="submit" onclick="alignText('start')"><i class="fas fa-align-right"></i></button>
+            <button class="btn-control" type="submit" onclick="alignText('end')"><i class="fas fa-align-right"></i></button>
             <button  class="btn-control" type="submit" onclick="moveText('right')"><i class="fas fa-angle-double-left"></i></button>
             <button class="btn-control" type="submit" onclick="moveText('left')"><i class="fas fa-angle-double-right"></i></button>
             <button class="btn-control" type="submit" onclick="moveText('down')"><i class="fas fa-angle-double-down"></i></button>
@@ -56,13 +52,13 @@ function editorRender() {
                 <i class="fas fa-font"></i>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="#" onclick = changeFont('eurof')>eurof</a>
-                    <a class="dropdown-item" href="#" onclick = changeFont('lato')>lato</a>
-                    <a class="dropdown-item" href="#" onclick = changeFont('Impact')>Impact</a>
-                    <a class="dropdown-item" href="#" onclick = changeFont('Indie_Flower')>Indie_Flower</a>
-                    <a class="dropdown-item" href="#" onclick = changeFont('Quicksand')>Quicksand</a>
-                    <a class="dropdown-item" href="#" onclick = changeFont('Oswald')>Oswald</a>
-                    <a class="dropdown-item" href="#" onclick = changeFont('san-serif')>san-serif</a>
+                    <a class="dropdown-item" href="" onclick = changeFont('eurof')>eurof</a>
+                    <a class="dropdown-item" href="" onclick = changeFont('lato')>lato</a>
+                    <a class="dropdown-item" href="" onclick = changeFont('Impact')>Impact</a>
+                    <a class="dropdown-item" href="" onclick = changeFont('Indie_Flower')>Indie_Flower</a>
+                    <a class="dropdown-item" href="" onclick = changeFont('Quicksand')>Quicksand</a>
+                    <a class="dropdown-item" href="" onclick = changeFont('Oswald')>Oswald</a>
+                    <a class="dropdown-item" href="" onclick = changeFont('san-serif')>san-serif</a>
                 </div>
             </div>
 
@@ -96,6 +92,7 @@ function editorRender() {
 function renderImg() {
     var imgUrl = getUrl()
     createCanvas(imgUrl);
+    
 }
 
 
@@ -105,16 +102,11 @@ function GetTxtFromUser() {
 
 }
 
-function renderReset() {
-    renderImg();
-    gMeme.txts = [];
-    renderTxt();
-}
-
 function renderTxt() {
-
     var txtFromUser = GetTxtFromUser();
-    if (!gMeme.txts.length) addMeme();
+    if (!gMeme.txts.length) {
+        createMeme();
+    }
     gMeme.txts[gChosenText].line = txtFromUser;
 
     for (var i = 0; i < gMeme.txts.length; i++) {
@@ -139,6 +131,8 @@ function renderTxt() {
         ctx.shadowColor="grey";
         ctx.fillText(txtCanvas, x, y);
     }
+    console.log(gMeme);
+    
 }
 
 
@@ -151,7 +145,7 @@ function downloadImg(elLink) {
 function addTxtLine() {
     if (gMeme.txts[gChosenText].line !== '') {
         gChosenText++;
-        addMeme();
+        createMeme();
     }
     document.querySelector('.txt-user').value = '';
 }
@@ -167,9 +161,11 @@ function alignText(direction) {
     var currText = gMeme.txts[gChosenText];
     if (direction === 'start' || direction === 'end' || direction === 'center') {
         currText.align = direction;
-        currText.x = 150;
+        if (direction === 'center') currText.x = 150;
+        if (direction === 'start') currText.x = 0;
+        if (direction === 'end') currText.x = currText.x = gCanvas.width;
     } else {
-        currText.y = (direction === 'bottom') ? 250 : 50;
+        currText.y = (direction === 'bottom') ?gCanvas.height * 0.9 : gCanvas.height * 0.1;
     }
     renderTxt();
 }
@@ -226,7 +222,6 @@ function deleteMeme() {
         document.querySelector('.txt-user').value = nextMeme.line;
         renderTxt();
     }else{
-        gMeme =  createMeme(gMeme.selectedImgId);
         document.querySelector('.txt-user').value = '';
         renderImg();
     }    

@@ -21,7 +21,10 @@ function renderPhotos() {
 }
 
 function openEditor(imgId) {
-    createMeme(imgId);
+    // createMeme(imgId);
+    gMeme.selectedImgId = imgId;
+    gMeme.txts = [];
+
     
     document.querySelector('.cont-gallery').style.display = "none";
     document.querySelector('.cont-editor').style.display = "block";

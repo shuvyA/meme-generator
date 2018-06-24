@@ -2,23 +2,19 @@
 
 var gMeme = {};
 
-function createMeme(imgId) {
-    return gMeme = {
-        selectedImgId: imgId,
-        txts: [
-            {
-                line: '',
-                size: 30,
-                align: 'center',
-                color: 'black',
-                font: 'impact',
-                x: 150,
-                y: 50,
-                shadow: true,
-                chosen:false
-            }
-        ]
-    };
+function createMeme() {
+        var text = {
+            line: '',
+            size: 30,
+            align: 'center',
+            color: 'black',
+            font: 'impact',
+            x: gCanvas.width / 2,
+            y: checkHeight(),
+            shadow: true,
+            chosen:false
+}
+    gMeme.txts.push(text)
 }
 
 
@@ -37,12 +33,7 @@ function createCanvas(imgUrl) {
     img.src = imgUrl;
     gCanvas.width = img.width;
     gCanvas.height = img.height;
-
-    // if (img.height > 350) {
-    //     var ratio = gCanvas.height / 350;
-    //     gCanvas.height = 350;
-    //     gCanvas.width = gCanvas.width / ratio;
-    // }
+        
     if (img.width > 470) {
         var ratio = gCanvas.width / 470;
         gCanvas.width = 470;
@@ -57,6 +48,8 @@ function createCanvas(imgUrl) {
 }
 
 function addMeme() {
+    // if (!gMeme.txts) firstMeme(); return;
+    if (gMeme.txts.length === 1) secondMeme(); return;
     var lastMeme = gMeme.txts.length - 1;
     lastMeme = lastMeme + lastMeme % 1;
     var newY = gMeme.txts[lastMeme].y + 30;
@@ -113,4 +106,25 @@ function removePrevChosen() {
         if (meme.chosen) meme.chosen = false;
         renderTxt();
     })
+}
+
+function firstMeme() {
+    gMeme.txts = [];
+    var height = gCanvas.height * 0.1;
+    gMeme.txts.push(getText(height))
+}
+
+function secondMeme() {
+    var height = gCanvas.height * 0.9;
+    gMeme.txts.push(getText(height))
+    
+}
+
+function checkHeight() {
+    if (gMeme.txts.length === 0) return gCanvas.height * 0.1; 
+    if (gMeme.txts.length === 1) return gCanvas.height * 0.9;
+    if (gMeme.txts.length === 2) return gMeme.txts[0].y + 30;
+    var lastMeme = gMeme.txts.length - 1;
+    lastMeme += lastMeme % 1;
+    return gMeme.txts[lastMeme].y + 30;
 }
