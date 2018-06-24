@@ -5,19 +5,18 @@ var gMeme = {};
 function createMeme(imgId) {
     return gMeme = {
         selectedImgId: imgId,
-        txts: [
-            {
-                line: '',
-                size: 20,
-                align: 'center',
-                color: 'black',
-                font: 'sans-serif',
-                x: 150,
-                y: 50,
-                shadowY: 0,
-                shadowX: 0
-            }
-        ]
+    txts: [
+        {
+            line: '',
+            size: 30,
+            align: 'center',
+            color: 'black',
+            font:'impact',
+            x:150,
+            y:50,
+            shadow:true
+        }
+    ]
     };
 }
 
@@ -48,49 +47,46 @@ function createCanvas(imgUrl) {
     ctx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
 
-
-
-
-
-
 function addMeme() {
-    var newY = gMeme.txts[gIdxLine - 1].y + 20;
+    var lastMeme = gMeme.txts.length - 1;
+    lastMeme = lastMeme + lastMeme%1;
+    var newY = gMeme.txts[lastMeme].y + 30;
     var newMeme = {
-        line: '',
-        size: 20,
-        align: 'center',
-        color: 'black',
-        font: 'sans-serif',
-        x: 150,
-        y: newY,
-        shadowY: 0,
-        shadowX: 0
-    }
-    gMeme.txts.push(newMeme);
+            line: '',
+            size: 30,
+            align: 'center',
+            color: 'black',
+            font:'impact',
+            x:150,
+            y:newY,
+            shadow:true
+        }
+        gMeme.txts.push(newMeme);
 }
 
-// function getTextIdx(x,y) {
-//     var ctx = gCanvas.getContext("2d");
-//     gMeme.txts.forEach(function(meme, idx){
-//         currTextWidth = ctx.measureText(currText.line).width;
-//         if (currText.align === 'center') {
-//             var leftTextEdge = currText.x - currTextWidth / 2;
-//             var rightTextEdge = currText.x + currTextWidth / 2;
-//         } else if (currText.align === 'start') {
-//             leftTextEdge = currText.x;
-//             rightTextEdge = currText.x + currTextWidth;
-//         } else {
-//             rightTextEdge = currText.x;
-//             leftTextEdge = currText.x - currTextWidth;
-//         }
+function getTextIdx(x,y) {
+    var chosenText = null;
+    var ctx = gCanvas.getContext("2d");
+    gMeme.txts.forEach(function(currText, idx){
+        var currTextWidth = ctx.measureText(currText.line).width;
+        if (currText.align === 'center') {
+            var leftTextEdge = currText.x - currTextWidth / 2;
+            var rightTextEdge = currText.x + currTextWidth / 2;
+        } else if (currText.align === 'start') {
+            leftTextEdge = currText.x;
+            rightTextEdge = currText.x + currTextWidth;
+        } else {
+            rightTextEdge = currText.x;
+            leftTextEdge = currText.x - currTextWidth;
+        }
 
-//         var bottomTextEdge = currText.y;
-//         var topTextEdge = bottomTextEdge - currText.size;
-
-//         if (x < rightTextEdge && x > leftTextEdge && y < bottomTextEdge && y > topTextEdge) {
-//             var choosenText = idx;
-//         }
-//     });
-//     return choosenText;
-// }
+        var bottomTextEdge = currText.y;
+        var topTextEdge = bottomTextEdge - currText.size;
+        
+        if (x < rightTextEdge && x > leftTextEdge && y < bottomTextEdge && y > topTextEdge) {
+            chosenText = idx;
+        }
+    });
+    return chosenText;
+}
 
