@@ -58,6 +58,7 @@ function editorRender() {
                 <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-font"></i>
                 </button>
+
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                     <div class="dropdown-item"  onclick = changeFont('eurof')>eurof</div>
                     <div class="dropdown-item"  onclick = changeFont('lato')>lato</div>
@@ -78,8 +79,6 @@ function editorRender() {
                 
                 <button class="btn-control" type="submit" onclick="deleteMeme()">delete</button>  
                 
-                <div class="line-control">
-
                 </div>
                 
               </div>
