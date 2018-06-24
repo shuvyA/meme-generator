@@ -1,6 +1,6 @@
 'use strict';
 
-var gMeme ={};
+var gMeme = {};
 
 function createMeme(imgId) {
     return gMeme = {
@@ -20,7 +20,7 @@ function createMeme(imgId) {
     };
 }
 
-        
+
 function getUrl() {
     var imgIdx = null;
     gImgs.forEach(function (img, idx) {
@@ -35,7 +35,17 @@ function createCanvas(imgUrl) {
     var ctx = gCanvas.getContext("2d");
     var img = new Image();
     img.src = imgUrl;
-    ctx.drawImage(img, 0, 0, 300, 300);
+    gCanvas.width = img.width;
+    gCanvas.height = img.height;
+
+    if (img.height > 350) {
+
+        var ratio = gCanvas.height / 350;
+        gCanvas.height = 350;
+        gCanvas.width = gCanvas.width / ratio;
+
+    }
+    ctx.drawImage(img, 0, 0,  gCanvas.width, gCanvas.height);
 }
 
 // function addMeme() {

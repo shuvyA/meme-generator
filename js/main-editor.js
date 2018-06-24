@@ -18,7 +18,7 @@ function editorRender() {
         <h1>editor-canvas</h1>
 
 
-        <div class="container flex space-between flex-wrap">
+        <div class="editor flex space-between flex-wrap">
 
             <canvas id="img-canvas" onclick = 'getPosition(event)'>
             </canvas>
