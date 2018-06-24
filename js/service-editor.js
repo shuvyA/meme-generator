@@ -48,25 +48,22 @@ function createCanvas(imgUrl) {
     ctx.drawImage(img, 0, 0,  gCanvas.width, gCanvas.height);
 }
 
-// function addMeme() {
-//     var lastMeme = gMeme.txts.length - 1;
-//     lastMeme = lastMeme + lastMeme%2;
-//         console.log(lastMeme);
-        
-    
-//     var newY = gMeme.txts[lastMeme].y + 30;
-//     var newMeme = {
-//             line: '',
-//             size: 30,
-//             align: 'center',
-//             color: 'black',
-//             font:'impact',
-//             x:150,
-//             y:newY,
-//             shadow:true
-//         }
-//         gMeme.txts.push(newMeme);
-// }
+function addMeme() {
+    var lastMeme = gMeme.txts.length - 1;
+    lastMeme = lastMeme + lastMeme%1;
+    var newY = gMeme.txts[lastMeme].y + 30;
+    var newMeme = {
+            line: '',
+            size: 30,
+            align: 'center',
+            color: 'black',
+            font:'impact',
+            x:150,
+            y:newY,
+            shadow:true
+        }
+        gMeme.txts.push(newMeme);
+}
 
 function getTextIdx(x,y) {
     var chosenText = null;

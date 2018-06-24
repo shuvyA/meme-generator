@@ -122,11 +122,11 @@ function downloadImg(elLink) {
 }
 
 
-// function addTxtLine() {
-//     gChosenText++;
-//     addMeme();
-//     document.querySelector('.txt-user').value ='';
-// }
+function addTxtLine() {
+    gChosenText++;
+    addMeme();
+    document.querySelector('.txt-user').value ='';
+}
 
 
 function changeFontSize(direction) {
