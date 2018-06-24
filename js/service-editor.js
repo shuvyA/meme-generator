@@ -31,8 +31,7 @@ function getUrl() {
 }
 
 function createCanvas(imgUrl) {
-    gCanvas.width = 300;
-    gCanvas.height = 300;
+
     var ctx = gCanvas.getContext("2d");
     var img = new Image();
     img.src = imgUrl;
@@ -40,13 +39,13 @@ function createCanvas(imgUrl) {
     gCanvas.height = img.height;
 
     if (img.height > 350) {
-
         var ratio = gCanvas.height / 350;
         gCanvas.height = 350;
         gCanvas.width = gCanvas.width / ratio;
-
     }
-    ctx.drawImage(img, 0, 0,  gCanvas.width, gCanvas.height);
+
+    if (window.innerWidth < 500) console.log('katan');
+    ctx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
 
 
