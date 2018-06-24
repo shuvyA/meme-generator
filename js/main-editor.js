@@ -51,24 +51,26 @@ function editorRender() {
             <button class="btn-control" type="submit" onclick="moveText('left')"><i class="fas fa-angle-double-right"></i></button>
             
             </div>
+            
+                <button class="btn-control" type="submit" onclick="alignText('top')">&#8793</button>
+                <button class="btn-control" type="submit" onclick="alignText('bottom')">&#8794</button>
 
 
-            <div class="line-control">
-            <div class="dropdown" onclick = 'openFonts()'>
-            <div><i class="fas fa-font"></i></div>
-  <div class="dropdown-content btn-control">
-    <p onclick = 'changeFont('eurof')'>Eurof</p>
-    <p onclick = 'changeFont('lato')'>Lato</p>
-    <p onclick = 'changeFont('Impact')'>Impact</p>
-    <p onclick = 'changeFont('Indie_Flower')'>Indie Flower</p>
-    <p onclick = 'changeFont('Quicksand')'>Quicksand</p>
-    <p onclick = 'changeFont('Oswald')'>Oswald</p>
-    <p onclick = 'changeFont('san-serif')'>San-Serif</p>
-    
-  </div>
-</div>
-
-                
+                <div  class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-font"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <div class="dropdown-item"  onclick = changeFont('eurof')>eurof</div>
+                    <div class="dropdown-item"  onclick = changeFont('lato')>lato</div>
+                    <div class="dropdown-item"  onclick = changeFont('Impact')>Impact</div>
+                    <div class="dropdown-item"  onclick = changeFont('Indie_Flower')>Indie_Flower</div>
+                    <div class="dropdown-item"  onclick = changeFont('Quicksand')>Quicksand</div>
+                    <div class="dropdown-item"  onclick = changeFont('Oswald')>Oswald</a>
+                    <div class="dropdown-item"  onclick = changeFont('san-serif')>san-serif</div>
+                </div>
+                </div>
+            </div>
 
               
 
@@ -99,7 +101,7 @@ function editorRender() {
 function renderImg() {
     var imgUrl = getUrl()
     createCanvas(imgUrl);
-    
+
 }
 
 
@@ -129,17 +131,17 @@ function renderTxt() {
         ctx.fillStyle = color;
         ctx.textAlign = currText.align;
         if (!currText.shadow) {
-            ctx.shadowOffsetY=0;
-            ctx.shadowOffsetX=0;
+            ctx.shadowOffsetY = 0;
+            ctx.shadowOffsetX = 0;
         } else {
-            ctx.shadowOffsetY=3;
-            ctx.shadowOffsetX=3;
+            ctx.shadowOffsetY = 3;
+            ctx.shadowOffsetX = 3;
         }
-        ctx.shadowColor="grey";
+        ctx.shadowColor = "grey";
         ctx.fillText(txtCanvas, x, y);
     }
     console.log(gMeme);
-    
+
 }
 
 
@@ -172,7 +174,7 @@ function alignText(direction) {
         if (direction === 'start') currText.x = 0;
         if (direction === 'end') currText.x = currText.x = gCanvas.width;
     } else {
-        currText.y = (direction === 'bottom') ?gCanvas.height * 0.9 : gCanvas.height * 0.1;
+        currText.y = (direction === 'bottom') ? gCanvas.height * 0.9 : gCanvas.height * 0.1;
     }
     renderTxt();
 }
@@ -221,7 +223,7 @@ function colorChange(val) {
 
 function deleteMeme() {
     gMeme.txts.splice(gChosenText, 1);
-    if (gChosenText){
+    if (gChosenText) {
         gChosenText--;
         var prevMeme = gMeme.txts[gChosenText];
         document.querySelector('.txt-user').value = prevMeme.line;
@@ -230,10 +232,10 @@ function deleteMeme() {
         var nextMeme = gMeme.txts[gChosenText];
         document.querySelector('.txt-user').value = nextMeme.line;
         renderTxt();
-    }else{
+    } else {
         document.querySelector('.txt-user').value = '';
         renderImg();
-    }    
+    }
 }
 
 function markLine(x, y, currTextWidth, height) {
@@ -251,21 +253,18 @@ function openGallery() {
     document.querySelector('.cont-editor').style.display = "none";
 
     // document.querySelector('.cont-editor').href = "#galleryI";
-    
+
 }
 
 
 function openEditorDom() {
     document.querySelector('.cont-gallery').style.display = "none";
-    document.querySelector('.cont-editor').style.display = "block"; 
+    document.querySelector('.cont-editor').style.display = "block";
     // document.querySelector('body').href = "#edit"; 
     // location.href='link.html  
-} 
-    
-function openFonts() {
-    var elFonts = document.querySelector('.dropdown-content');
-    elFonts.style.display = 'block';
 }
+
+
 
 
 

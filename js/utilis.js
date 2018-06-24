@@ -30,3 +30,15 @@ function openNavMobile(x) {
     var opac = document.querySelector('.toggle-menu-screen')
     opac.classList.toggle('show-div');
 }
+
+
+function closeNavMobile() {
+    var change = document.querySelector('.nav-mobile')
+    change.classList.remove("change");
+
+    
+    var menu = document.querySelector('ul.main-menu');
+    menu.classList.remove('open');
+    var opac = document.querySelector('.toggle-menu-screen')
+    opac.classList.remove('show-div');
+}
