@@ -1,27 +1,27 @@
 'use strict';
 
-var gMeme ={};
+var gMeme = {};
 
 function createMeme(imgId) {
     return gMeme = {
         selectedImgId: imgId,
-    txts: [
-        {
-            line: '',
-            size: 20,
-            align: 'center',
-            color: 'black',
-            font:'sans-serif',
-            x:150,
-            y:50,
-            shadowY:0,
-            shadowX:0
-        }
-    ]
+        txts: [
+            {
+                line: '',
+                size: 20,
+                align: 'center',
+                color: 'black',
+                font: 'sans-serif',
+                x: 150,
+                y: 50,
+                shadowY: 0,
+                shadowX: 0
+            }
+        ]
     };
 }
 
-        
+
 function getUrl() {
     var imgIdx = null;
     gImgs.forEach(function (img, idx) {
@@ -36,23 +36,38 @@ function createCanvas(imgUrl) {
     var ctx = gCanvas.getContext("2d");
     var img = new Image();
     img.src = imgUrl;
-    ctx.drawImage(img, 0, 0, 300, 300);
+    gCanvas.width = img.width;
+    gCanvas.height = img.height;
+
+    if (img.height > 350) {
+
+        var ratio = gCanvas.height / 350;
+        gCanvas.height = 350;
+        gCanvas.width = gCanvas.width / ratio;
+
+    }
+    ctx.drawImage(img, 0, 0,  gCanvas.width, gCanvas.height);
 }
+
+
+
+
+
 
 function addMeme() {
     var newY = gMeme.txts[gIdxLine - 1].y + 20;
     var newMeme = {
-            line: '',
-            size: 20,
-            align: 'center',
-            color: 'black',
-            font:'sans-serif',
-            x:150,
-            y:newY,
-            shadowY:0,
-            shadowX:0
-        }
-        gMeme.txts.push(newMeme);
+        line: '',
+        size: 20,
+        align: 'center',
+        color: 'black',
+        font: 'sans-serif',
+        x: 150,
+        y: newY,
+        shadowY: 0,
+        shadowX: 0
+    }
+    gMeme.txts.push(newMeme);
 }
 
 // function getTextIdx(x,y) {

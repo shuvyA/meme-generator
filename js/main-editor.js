@@ -19,23 +19,32 @@ function editorRender() {
         <h1>editor-canvas</h1>
 
 
-        <div class="container flex space-between flex-wrap">
+        <div class="editor flex space-between flex-wrap">
 
             <canvas id="img-canvas" onclick = 'getPosition(event)'>
             </canvas>
             <div class="control-box">
-                <input class="txt-user${gIdxLine}" type="text" oninput="renderTxt()" placeholder="write your meme">
-
-                <button type="submit" onclick="addTxtLine()">Add-Line</button>
-                <button type="submit" onclick="changeFontSize(${gIdxLine}, 'increase')">+</button>
-                <button type="submit" onclick="changeFontSize(${gIdxLine}, 'decrease')">-</button>
-                <button type="submit" onclick="alignText(${gIdxLine}, 'end')"><i class="fas fa-align-left"></i></button> 
-                <button type="submit" onclick="alignText(${gIdxLine}, 'center')"><i class="fas fa-align-center"></i></button>
-                <button type="submit" onclick="alignText(${gIdxLine}, 'start')"><i class="fas fa-align-right"></i></button>
-                <button type="submit" onclick="moveText(${gIdxLine},'right')"><i class="fas fa-angle-double-left"></i></button>
-                <button type="submit" onclick="moveText(${gIdxLine}, 'left')"><i class="fas fa-angle-double-right"></i></button>
-                <button type="submit" onclick="moveText(${gIdxLine}, 'down')"><i class="fas fa-angle-double-down"></i></button>
-                <button type="submit" onclick="moveText(${gIdxLine}, 'up')"><i class="fas fa-angle-double-up"></i></button>
+          <div>
+          <input class="txt-user${gIdxLine}" type="text" oninput="renderTxt()" placeholder="write your meme">
+          
+          </div> 
+            <div>
+            
+            <button type="submit" onclick="addTxtLine()">Add-Line</button>
+            <button type="submit" onclick="changeFontSize(${gIdxLine}, 'increase')">+</button>
+            <button type="submit" onclick="changeFontSize(${gIdxLine}, 'decrease')">-</button>
+            
+            </div>
+            <div>
+            
+            <button type="submit" onclick="alignText(${gIdxLine}, 'end')"><i class="fas fa-align-left"></i></button> 
+            <button type="submit" onclick="alignText(${gIdxLine}, 'center')"><i class="fas fa-align-center"></i></button>
+            <button type="submit" onclick="alignText(${gIdxLine}, 'start')"><i class="fas fa-align-right"></i></button>
+            <button type="submit" onclick="moveText(${gIdxLine},'right')"><i class="fas fa-angle-double-left"></i></button>
+            <button type="submit" onclick="moveText(${gIdxLine}, 'left')"><i class="fas fa-angle-double-right"></i></button>
+            <button type="submit" onclick="moveText(${gIdxLine}, 'down')"><i class="fas fa-angle-double-down"></i></button>
+            <button type="submit" onclick="moveText(${gIdxLine}, 'up')"><i class="fas fa-angle-double-up"></i></button>
+            </div>
                 <button type="submit" onclick="alignText(${gIdxLine}, 'top')">&#8793</button>
                 <button type="submit" onclick="alignText(${gIdxLine}, 'bottom')">&#8794</button>
                 <div class="btn-group" role="group">
@@ -236,30 +245,6 @@ function sddShadow(lineIdx) {
 
 
 
-
-function renderImg() {
-    var currImgIdx = getImgfromSelctId();
-
-    var imgUrl = gImgs[currImgIdx].url;
-
-    canvas.width = 300;
-    canvas.height = 300;
-    var ctx = canvas.getContext("2d");
-    var img = new Image();
-    img.src = imgUrl;
-
-    canvas.width = img.width;
-    canvas.height = img.height;
-
-    if (img.height > 350) {
-
-        var ratio = canvas.height / 300;
-        canvas.height = 300;
-        canvas.width = canvas.width / ratio;
-
-    }
-    ctx.drawImage(img, 0, 0);
-}
 
 
 

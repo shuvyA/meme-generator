@@ -60,6 +60,10 @@ body {
     justify-content: space-around;
 }
 
+.justify-center {
+    justify-content: center;
+}
+
 .align-center {
     align-items: center;
 }
@@ -167,6 +171,64 @@ nav {
 }
 
 
+/* cover */
+.cover-img {
+    background-color: #323232;
+
+    background-image: url(../img/cover/paint.jpg);
+    width: 100%;
+    height: 400px;
+    background-position: center;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text-cover h1{
+    font-family: 'Oswald', Tahoma, Geneva, Verdana, sans-serif;
+margin: 0;
+padding: 5px;
+font-size: 6em;
+color: #0F243E;
+background-color: rgba(240, 255, 255, 0.377);
+width: 100%;
+text-align: center;
+
+
+}
+
+
+
+.btn-cover {
+    background: #0F243E;
+    /* background-image: -webkit-linear-gradient(top, #d6d6d6, #0F243E);
+    background-image: -moz-linear-gradient(top, #d6d6d6, #0F243E);
+    background-image: -ms-linear-gradient(top, #d6d6d6, #0F243E);
+    background-image: -o-linear-gradient(top, #d6d6d6, #0F243E);
+    background-image: linear-gradient(to bottom, #d6d6d6, #0F243E); */
+    background-color: rgba(15, 36, 62, 0.363);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 21px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .btn-cover:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+  }
 
 /*main*/
 
@@ -174,16 +236,27 @@ main {
     margin: 0 auto;
     max-width: 980px;
     /* width: 100%; */
+    
 }
 
-.container{
+
+
+.editor{
     width: 100%;
     /* background-color: aqua; */
+    /* background-color:#98998C; */
+    background-color: #323232;
+    padding: 20px;
+    color: #0F243E;
+    padding-top: 40px;
+    padding-bottom: 30px;
 }
 
 
 .control-box {
     padding: 10px;
+    background-color: #323232;
+    border: solid 1px #3498db;
 }
 
 .search-box {
