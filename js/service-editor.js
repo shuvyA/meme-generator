@@ -93,13 +93,25 @@ function getTextIdx(x, y) {
 
         var bottomTextEdge = currText.y;
         var topTextEdge = bottomTextEdge - currText.size;
-
-        if (x < rightTextEdge && x > leftTextEdge && y < bottomTextEdge && y > topTextEdge && !currText.chosen) {
+        if (x < rightTextEdge && x > leftTextEdge && y < bottomTextEdge && y > topTextEdge) {
+            if (currText.chosen === true) {
+                currText.chosen = false;
+                renderTxt();
+                gChosenText = 0;
+            } else {
+                removePrevChosen();
+                currText.chosen = true;
+                markLine(leftTextEdge, topTextEdge, currTextWidth,  currText.size);
+            }
             chosenText = idx;
-            currText.chosen = true;
-            markLine(leftTextEdge, topTextEdge, currTextWidth,  currText.size);
         }
     });
     return chosenText;
 }
 
+function removePrevChosen() {
+    gMeme.txts.forEach(function(meme, idx){
+        if (meme.chosen) meme.chosen = false;
+        renderTxt();
+    })
+}

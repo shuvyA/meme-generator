@@ -103,6 +103,7 @@ function renderReset() {
 function renderTxt() {
      
     var txtFromUser = GetTxtFromUser();
+    if (!gMeme.txts.length) addMeme();
     gMeme.txts[gChosenText].line = txtFromUser;
     
     for (var i = 0; i < gMeme.txts.length; i++) {
@@ -120,9 +121,10 @@ function renderTxt() {
         if (!currText.shadow) {
             ctx.shadowOffsetY=0;
             ctx.shadowOffsetX=0;
+        } else {
+            ctx.shadowOffsetY=3;
+            ctx.shadowOffsetX=3;
         }
-        ctx.shadowOffsetY=3;
-        ctx.shadowOffsetX=3;
         ctx.shadowColor="grey";
         ctx.fillText(txtCanvas, x, y);
     }
@@ -204,11 +206,19 @@ function colorChange(val) {
 function deleteMeme() {
     gMeme.txts.splice(gChosenText, 1);
     if (gChosenText){
-        var prevMeme = gMeme.txts[gChosenText - 1];
-        document.querySelector('.txt-user').value = prevMeme.line;
         gChosenText--;
-    }
-    renderTxt();
+        var prevMeme = gMeme.txts[gChosenText];
+        document.querySelector('.txt-user').value = prevMeme.line;
+        renderTxt();
+    } else if (gMeme.txts.length > 0) {
+        var nextMeme = gMeme.txts[gChosenText];
+        document.querySelector('.txt-user').value = nextMeme.line;
+        renderTxt();
+    }else{
+        gMeme =  createMeme(gMeme.selectedImgId);
+        document.querySelector('.txt-user').value = '';
+        renderImg();
+    }    
 }
 
 function markLine(x, y, currTextWidth,  height) {
