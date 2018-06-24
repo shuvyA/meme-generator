@@ -30,6 +30,7 @@ function editorRender() {
     
     <div class="control-box">
     <h2><i class="fas fa-cog"></i> Start to creator!</h2>
+
             <div class="line-control">
             <input class="txt-user" type="text" oninput="renderTxt()" placeholder="write your meme">
             
@@ -46,6 +47,8 @@ function editorRender() {
             <button class="btn-control" type="submit" onclick="alignText('start')"><i class="fas fa-align-right"></i></button>
             <button  class="btn-control" type="submit" onclick="moveText('right')"><i class="fas fa-angle-double-left"></i></button>
             <button class="btn-control" type="submit" onclick="moveText('left')"><i class="fas fa-angle-double-right"></i></button>
+            </div>
+            <div class="line-control">
             <button class="btn-control" type="submit" onclick="moveText('down')"><i class="fas fa-angle-double-down"></i></button>
             <button class="btn-control" type="submit" onclick="moveText('up')"><i class="fas fa-angle-double-up"></i></button>
             
@@ -78,17 +81,19 @@ function editorRender() {
                 
                 <button class="btn-control" type="submit" onclick="deleteMeme()">delete</button>  
                 
-                <div class="add-line"></div>
+                <div class="line-control">
+
                 <a href="#"  onclick="downloadImg(this)" download="my-img.jpg" >
                 Download as jpeg
               </a>
+                </div>
+                
               </div>
         </div>
     
     `;
 
     document.querySelector('.editor-canvas').innerHTML = strHtml;
-
 }
 
 
