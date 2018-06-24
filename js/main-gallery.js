@@ -28,6 +28,7 @@ function openEditor(imgId) {
     gMeme.txts = [];
 
     document.querySelector('.cont-gallery').style.display = "none";
+    document.querySelector('.cont-wordFilter').style.display = "none";
     document.querySelector('.cont-editor').style.display = "block";
     initEditor();
 }
