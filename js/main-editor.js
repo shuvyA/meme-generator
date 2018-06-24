@@ -54,12 +54,7 @@ function editorRender() {
             <button class="btn-control" type="submit" onclick="moveText('left')"><i class="fas fa-angle-double-right"></i></button>
             
             </div>
-            
-                <button class="btn-control" type="submit" onclick="alignText('top')">&#8793</button>
-                <button class="btn-control" type="submit" onclick="alignText('bottom')">&#8794</button>
-
-
-                <div  class="btn-group" role="group">
+                 <div  class="btn-control btn-group" role="group">
                 <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-font"></i>
                 </button>
@@ -137,7 +132,7 @@ function renderTxt() {
             ctx.shadowOffsetY = 3;
             ctx.shadowOffsetX = 3;
         }
-        ctx.shadowColor = "grey";
+        ctx.shadowColor = "black";
         ctx.fillText(txtCanvas, x, y);
     }
     console.log(gMeme);
