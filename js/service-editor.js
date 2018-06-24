@@ -37,10 +37,15 @@ function createCanvas(imgUrl) {
     gCanvas.width = img.width;
     gCanvas.height = img.height;
 
-    if (img.height > 350) {
-        var ratio = gCanvas.height / 350;
-        gCanvas.height = 350;
-        gCanvas.width = gCanvas.width / ratio;
+    // if (img.height > 350) {
+    //     var ratio = gCanvas.height / 350;
+    //     gCanvas.height = 350;
+    //     gCanvas.width = gCanvas.width / ratio;
+    // }
+    if (img.width > 450) {
+        var ratio = gCanvas.width / 450;
+        gCanvas.width = 450;
+        gCanvas.height = gCanvas.height / ratio;
     }
 
     if (document.body.offsetWidth < 570) {

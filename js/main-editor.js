@@ -15,29 +15,41 @@ function editorRender() {
     var strHtml = `
     
 
-        <h1>editor-canvas</h1>
-
-
-        <div class="editor flex space-between flex-wrap">
-
+    
+    
+    <div class="editor flex space-between flex-wrap">
+    <div class="cont-canvas">
+            <h2>Editor</h2>
             <canvas id="img-canvas" onclick = 'getPosition(event)'>
             </canvas>
-            <div class="control-box">
-                <input class="txt-user" type="text" oninput="renderTxt()" placeholder="write your meme">
+    </div>
+            
+ <div class="control-box">
+            <h2>Start to creator!</h2>
+            <div class="line-control">
+            <input class="txt-user" type="text" oninput="renderTxt()" placeholder="write your meme">
+            
+            </div>
+            <div class="line-control">
+            <button class="btn-control" type="submit" onclick="addTxtLine()">Add-Line</button>
+            <button class="btn-control" type="submit" onclick="changeFontSize('increase')">+</button>
+            <button class="btn-control" type="submit" onclick="changeFontSize('decrease')">-</button>
+            
+            </div>
+            <div class="line-control">
+            <button class="btn-control" type="submit" onclick="alignText('end')"><i class="fas fa-align-left"></i></button> 
+            <button class="btn-control" type="submit" onclick="alignText('center')"><i class="fas fa-align-center"></i></button>
+            <button class="btn-control" type="submit" onclick="alignText('start')"><i class="fas fa-align-right"></i></button>
+            <button  class="btn-control" type="submit" onclick="moveText('right')"><i class="fas fa-angle-double-left"></i></button>
+            <button class="btn-control" type="submit" onclick="moveText('left')"><i class="fas fa-angle-double-right"></i></button>
+            <button class="btn-control" type="submit" onclick="moveText('down')"><i class="fas fa-angle-double-down"></i></button>
+            <button class="btn-control" type="submit" onclick="moveText('up')"><i class="fas fa-angle-double-up"></i></button>
+            
+            </div>
 
-                <button type="submit" onclick="addTxtLine()">Add-Line</button>
-                <button type="submit" onclick="changeFontSize('increase')">+</button>
-                <button type="submit" onclick="changeFontSize('decrease')">-</button>
-                <button type="submit" onclick="alignText('end')"><i class="fas fa-align-left"></i></button> 
-                <button type="submit" onclick="alignText('center')"><i class="fas fa-align-center"></i></button>
-                <button type="submit" onclick="alignText('start')"><i class="fas fa-align-right"></i></button>
-                <button type="submit" onclick="moveText('right')"><i class="fas fa-angle-double-left"></i></button>
-                <button type="submit" onclick="moveText('left')"><i class="fas fa-angle-double-right"></i></button>
-                <button type="submit" onclick="moveText('down')"><i class="fas fa-angle-double-down"></i></button>
-                <button type="submit" onclick="moveText('up')"><i class="fas fa-angle-double-up"></i></button>
-                <button type="submit" onclick="alignText('top')">&#8793</button>
-                <button type="submit" onclick="alignText('bottom')">&#8794</button>
-                <div class="btn-group" role="group">
+                <button class="btn-control" type="submit" onclick="alignText('top')">&#8793</button>
+                <button class="btn-control" type="submit" onclick="alignText('bottom')">&#8794</button>
+                <div  class="btn-group" role="group">
                     <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-font"></i>
                     </button>
@@ -51,13 +63,13 @@ function editorRender() {
                         <a class="dropdown-item" href="#" onclick = changeFont('san-serif')>san-serif</a>
                     </div>
                 </div>
-                <button type="submit" onclick="sddShadow()">shadow</button>
+                <button class="btn-control" type="submit" onclick="sddShadow()">shadow</button>
                 <input type="color" name="favcolor" value="#ff0000" onchange="colorChange(this.value)">
                 
-                <button type="submit" onclick="deleteMeme()">delete</button>  
+                <button class="btn-control" type="submit" onclick="deleteMeme()">delete</button>  
                 
                 <div class="add-line"></div>
-                <a href="#" onclick="downloadImg(this)" download="my-img.jpg" >
+                <a href="#"  onclick="downloadImg(this)" download="my-img.jpg" >
                 Download as jpeg
               </a>
             </div>

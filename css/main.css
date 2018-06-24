@@ -245,21 +245,81 @@ main {
 
 .editor{
     width: 100%;
-    /* background-color: aqua; */
-    /* background-color:#98998C; */
     background-color: #323232;
     padding: 20px;
     color: #0F243E;
     padding-top: 40px;
     padding-bottom: 30px;
+    /* max-width: 100vh; */
+
+
 }
 
-
+.cont-canvas h2 {
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    background-color: #82CADB;
+    text-align: center;
+    border-radius: 5px;
+    /* padding-bottom: 20px; */
+    margin-bottom: 20px;
+}
 .control-box {
     padding: 10px;
     background-color: #323232;
-    border: solid 1px #3498db;
+    border: solid 1px #ffffff3b;
+    border-radius: 15px;
+    /* width: 100%; */
+    /* max-width: 450px; */
 }
+
+
+.control-box h2 {
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    background-color: #82CADB;
+    text-align: center;
+    border-radius: 5px;
+    /* padding-bottom: 20px; */
+    margin-bottom: 20px;
+}
+
+.txt-user{
+    width: 100%;
+}
+
+.line-control {
+
+    margin-bottom: 10px;
+}
+
+
+
+.btn-control {
+	background-color:#E0B62C;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	border:1px solid #29668f;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	padding:13px 20px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #3d768a;
+}
+.btn-control:hover {
+	background-color:#408c99;
+}
+.btn-control:active {
+	position:relative;
+	top:1px;
+}
+
+        
+
 
 .search-box {
     justify-content: center;
