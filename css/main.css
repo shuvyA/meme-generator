@@ -40,6 +40,9 @@ body {
     
 }
 
+a {
+    text-decoration: none;
+}
 /*helpers*/
 .flex {
     display: flex;
@@ -302,7 +305,7 @@ main {
     height: 40px;
     text-align: center;
     padding: 10px;
-    margin:20px;
+    /* margin:20px; */
 }
 
 .line-control {

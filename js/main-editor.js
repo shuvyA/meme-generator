@@ -25,7 +25,10 @@ function editorRender() {
     </div>
     
     <div class="control-box">
-    <h2><i class="fas fa-cog"></i> Start to creator!</h2>
+    <a href="#"  onclick="downloadImg(this)" download="my-img.jpg" ><h2><i class="fas fa-download"></i>
+    Download as image
+  </h2></a>
+  
 
             <div class="line-control">
             <input class="txt-user" type="text" oninput="renderTxt()" placeholder="write your meme">
@@ -82,9 +85,6 @@ function editorRender() {
                 
                 <div class="line-control">
 
-                <a href="#"  onclick="downloadImg(this)" download="my-img.jpg" >
-                Download as jpeg
-              </a>
                 </div>
                 
               </div>
