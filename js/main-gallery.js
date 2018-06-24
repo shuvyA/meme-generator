@@ -59,6 +59,7 @@ function cleanSearchBox() {
     document.querySelector('.search-box input').value = '';
 }
 
+
 function onKeyWord(keyWord) {
     document.querySelector('.search-box input').value = keyWord;
     renderPhotos();
