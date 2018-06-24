@@ -14,7 +14,8 @@ function createMeme(imgId) {
                 font: 'impact',
                 x: 150,
                 y: 50,
-                shadow: true
+                shadow: true,
+                chosen:false
             }
         ]
     };
@@ -63,7 +64,8 @@ function addMeme() {
         font: 'impact',
         x: 150,
         y: newY,
-        shadow: true
+        shadow: true,
+        chosen:false
     }
     gMeme.txts.push(newMeme);
 }
@@ -87,8 +89,9 @@ function getTextIdx(x, y) {
         var bottomTextEdge = currText.y;
         var topTextEdge = bottomTextEdge - currText.size;
 
-        if (x < rightTextEdge && x > leftTextEdge && y < bottomTextEdge && y > topTextEdge) {
+        if (x < rightTextEdge && x > leftTextEdge && y < bottomTextEdge && y > topTextEdge && !currText.chosen) {
             chosenText = idx;
+            currText.chosen = true;
             markLine(leftTextEdge, topTextEdge, currTextWidth,  currText.size);
         }
     });
