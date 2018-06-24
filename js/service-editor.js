@@ -86,6 +86,7 @@ function getTextIdx(x,y) {
         
         if (x < rightTextEdge && x > leftTextEdge && y < bottomTextEdge && y > topTextEdge) {
             chosenText = idx;
+            markLine(leftTextEdge, topTextEdge, currTextWidth,  currText.size);
         }
     });
     return chosenText;
