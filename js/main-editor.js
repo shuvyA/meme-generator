@@ -185,8 +185,6 @@ function moveText(direction) {
 
 function changeFont(font) {
     gMeme.txts[gChosenText].font = font;
-    var elFonts = document.querySelector('.dropdown-content');
-    elFonts.style.display = 'none';
     renderTxt();
 }
 
