@@ -5,18 +5,18 @@ var gMeme = {};
 function createMeme(imgId) {
     return gMeme = {
         selectedImgId: imgId,
-    txts: [
-        {
-            line: '',
-            size: 30,
-            align: 'center',
-            color: 'black',
-            font:'impact',
-            x:150,
-            y:50,
-            shadow:true
-        }
-    ]
+        txts: [
+            {
+                line: '',
+                size: 30,
+                align: 'center',
+                color: 'black',
+                font: 'impact',
+                x: 150,
+                y: 50,
+                shadow: true
+            }
+        ]
     };
 }
 
@@ -43,31 +43,35 @@ function createCanvas(imgUrl) {
         gCanvas.width = gCanvas.width / ratio;
     }
 
-    if (window.innerWidth < 500) console.log('katan');
+    if (document.body.offsetWidth < 570) {
+        // console.log('katan');
+        gCanvas.width = document.body.offsetWidth - 40;
+        gCanvas.height = gCanvas.width * (img.height / img.width);
+    }
     ctx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
 
 function addMeme() {
     var lastMeme = gMeme.txts.length - 1;
-    lastMeme = lastMeme + lastMeme%1;
+    lastMeme = lastMeme + lastMeme % 1;
     var newY = gMeme.txts[lastMeme].y + 30;
     var newMeme = {
-            line: '',
-            size: 30,
-            align: 'center',
-            color: 'black',
-            font:'impact',
-            x:150,
-            y:newY,
-            shadow:true
-        }
-        gMeme.txts.push(newMeme);
+        line: '',
+        size: 30,
+        align: 'center',
+        color: 'black',
+        font: 'impact',
+        x: 150,
+        y: newY,
+        shadow: true
+    }
+    gMeme.txts.push(newMeme);
 }
 
-function getTextIdx(x,y) {
+function getTextIdx(x, y) {
     var chosenText = null;
     var ctx = gCanvas.getContext("2d");
-    gMeme.txts.forEach(function(currText, idx){
+    gMeme.txts.forEach(function (currText, idx) {
         var currTextWidth = ctx.measureText(currText.line).width;
         if (currText.align === 'center') {
             var leftTextEdge = currText.x - currTextWidth / 2;
@@ -82,7 +86,7 @@ function getTextIdx(x,y) {
 
         var bottomTextEdge = currText.y;
         var topTextEdge = bottomTextEdge - currText.size;
-        
+
         if (x < rightTextEdge && x > leftTextEdge && y < bottomTextEdge && y > topTextEdge) {
             chosenText = idx;
         }
