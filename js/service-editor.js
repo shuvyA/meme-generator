@@ -43,14 +43,13 @@ function createCanvas(imgUrl) {
     //     gCanvas.height = 350;
     //     gCanvas.width = gCanvas.width / ratio;
     // }
-    if (img.width > 450) {
-        var ratio = gCanvas.width / 450;
-        gCanvas.width = 450;
+    if (img.width > 470) {
+        var ratio = gCanvas.width / 470;
+        gCanvas.width = 470;
         gCanvas.height = gCanvas.height / ratio;
     }
 
     if (document.body.offsetWidth < 570) {
-        // console.log('katan');
         gCanvas.width = document.body.offsetWidth - 40;
         gCanvas.height = gCanvas.width * (img.height / img.width);
     }

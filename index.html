@@ -14,29 +14,29 @@
 </head>
 
 <body onload="init()">
-        <div class="toggle-menu-screen screen" onclick="openNavMobile(this)" alt="toggle main menu"></div>
+    <div class="toggle-menu-screen screen" onclick="openNavMobile(this)" alt="toggle main menu"></div>
 
-    <header >
+    <header>
         <div class="con-head flex space-between align-center">
             <h1>meme generator</h1>
-        <nav >
-            <ul class="main-menu clean-list flex">
-                <li>
-                    <a href="#">gallery</a>
-                </li>
-                <li>
-                    <a href="#about">About</a>
-                </li>
+            <nav>
+                <ul class="main-menu clean-list flex">
+                    <li>
+                        <a href="#">gallery</a>
+                    </li>
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
 
-                <li>
-                    <a href="#contact">Get In Touch</a>
-                </li>
+                    <li>
+                        <a href="#contact">Get In Touch</a>
+                    </li>
 
-            </ul>
+                </ul>
 
-        </nav>
-          <!-- Mobile-nav -->
-          <div class="nav-mobile" onclick="openNavMobile(this)">
+            </nav>
+            <!-- Mobile-nav -->
+            <div class="nav-mobile" onclick="openNavMobile(this)">
                 <div class="bar1"></div>
                 <div class="bar2"></div>
                 <div class="bar3"></div>
@@ -45,39 +45,49 @@
     </header>
 
     <!-- cover -->
-    
+
     <div class="cover-img  text-cover flex align-center column justify-center space-around">
         <!-- <div class="text-cover flex align-center column justify-center space-around"> -->
-            <h1 class="animated swing">You are the creator.</h1>
-            <button class="btn-cover" type="submit">Go to gallery</button>
+        <h1 class="animated swing">You are the creator.</h1>
+        <button class="btn-cover" type="submit">Go to gallery</button>
 
         <!-- </div> -->
     </div>
 
+    <!-- Editor -->
+    <div class="cont-editor">
+        <div class="editor-canvas"></div>
+
+    </div>
+
 
     <main>
-<div class="editor-canvas">
-    <h2>search</h2>
+
+
+<div class="cont-gallery">
+  <h2>Choose image</h2>
+
+        <div class="the-gallery clean-list flex">
+
+        </div>
+
+        <div class="wordFilter clean-list flex wrap">
+            <ul>
+
+            </ul>
+        </div>
+
+</div>
+      
+
+
+        <h2>search</h2>
         <div class="search-box flex">
-            <input list="browsers" name="browser" onchange='renderPhotos()'>
+            <input placeholder="search" list="browsers" name="browser" onchange='renderPhotos()'>
             <datalist id="browsers">
 
             </datalist>
 
-        </div>
-
-
-        <h2>The gallery</h2>
-
-            <div class="the-gallery clean-list flex">
-
-            </div>
-
-            <div class="wordFilter clean-list flex wrap">
-                <ul>
-
-                </ul>
-            </div>
         </div>
     </main>
 
@@ -123,4 +133,5 @@
     <script src="js/main-gallery.js"></script>
     <script src="js/utilis.js"></script>
 </body>
+
 </html>

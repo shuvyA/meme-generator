@@ -19,13 +19,13 @@ function editorRender() {
     
     <div class="editor flex space-between flex-wrap">
     <div class="cont-canvas">
-            <h2>Editor</h2>
+            <h2><i class="fas fa-edit"></i> Editor</h2>
             <canvas id="img-canvas" onclick = 'getPosition(event)'>
             </canvas>
     </div>
             
  <div class="control-box">
-            <h2>Start to creator!</h2>
+            <h2><i class="fas fa-cog"></i> Start to creator!</h2>
             <div class="line-control">
             <input class="txt-user" type="text" oninput="renderTxt()" placeholder="write your meme">
             
@@ -49,20 +49,26 @@ function editorRender() {
 
                 <button class="btn-control" type="submit" onclick="alignText('top')">&#8793</button>
                 <button class="btn-control" type="submit" onclick="alignText('bottom')">&#8794</button>
+
+
                 <div  class="btn-group" role="group">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-font"></i>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <a class="dropdown-item" href="#" onclick = changeFont('eurof')>eurof</a>
-                        <a class="dropdown-item" href="#" onclick = changeFont('lato')>lato</a>
-                        <a class="dropdown-item" href="#" onclick = changeFont('Impact')>Impact</a>
-                        <a class="dropdown-item" href="#" onclick = changeFont('Indie_Flower')>Indie_Flower</a>
-                        <a class="dropdown-item" href="#" onclick = changeFont('Quicksand')>Quicksand</a>
-                        <a class="dropdown-item" href="#" onclick = changeFont('Oswald')>Oswald</a>
-                        <a class="dropdown-item" href="#" onclick = changeFont('san-serif')>san-serif</a>
-                    </div>
+                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-font"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    <a class="dropdown-item" href="#" onclick = changeFont('eurof')>eurof</a>
+                    <a class="dropdown-item" href="#" onclick = changeFont('lato')>lato</a>
+                    <a class="dropdown-item" href="#" onclick = changeFont('Impact')>Impact</a>
+                    <a class="dropdown-item" href="#" onclick = changeFont('Indie_Flower')>Indie_Flower</a>
+                    <a class="dropdown-item" href="#" onclick = changeFont('Quicksand')>Quicksand</a>
+                    <a class="dropdown-item" href="#" onclick = changeFont('Oswald')>Oswald</a>
+                    <a class="dropdown-item" href="#" onclick = changeFont('san-serif')>san-serif</a>
                 </div>
+            </div>
+
+              
+
+
                 <button class="btn-control" type="submit" onclick="sddShadow()">shadow</button>
                 <input type="color" name="favcolor" value="#ff0000" onchange="colorChange(this.value)">
                 
@@ -72,6 +78,10 @@ function editorRender() {
                 <a href="#"  onclick="downloadImg(this)" download="my-img.jpg" >
                 Download as jpeg
               </a>
+              </div>
+              <div>
+              <button class="btn-control" type="submit" onclick="openGallery()"><i class="fas fa-undo-alt"></i> Back to Gallery</button>
+            
             </div>
         </div>
     
@@ -80,6 +90,7 @@ function editorRender() {
     document.querySelector('.editor-canvas').innerHTML = strHtml;
 
 }
+
 
 
 function renderImg() {
@@ -91,7 +102,7 @@ function renderImg() {
 function GetTxtFromUser() {
     renderImg();
     return document.querySelector(`.txt-user`).value;
-    
+
 }
 
 function renderReset() {
@@ -101,16 +112,16 @@ function renderReset() {
 }
 
 function renderTxt() {
-     
+
     var txtFromUser = GetTxtFromUser();
     gMeme.txts[gChosenText].line = txtFromUser;
-    
+
     for (var i = 0; i < gMeme.txts.length; i++) {
         var currText = gMeme.txts[i];
         var txtCanvas = currText.line;
         var y = currText.y;
         var x = currText.x;
-        var fontSize =currText.size;
+        var fontSize = currText.size;
         var color = currText.color;
         var ctx = gCanvas.getContext("2d");
         var fontFamily = currText.font;
@@ -118,12 +129,12 @@ function renderTxt() {
         ctx.fillStyle = color;
         ctx.textAlign = currText.align;
         if (!currText.shadow) {
-            ctx.shadowOffsetY=0;
-            ctx.shadowOffsetX=0;
+            ctx.shadowOffsetY = 0;
+            ctx.shadowOffsetX = 0;
         }
-        ctx.shadowOffsetY=3;
-        ctx.shadowOffsetX=3;
-        ctx.shadowColor="grey";
+        ctx.shadowOffsetY = 3;
+        ctx.shadowOffsetX = 3;
+        ctx.shadowColor = "grey";
         ctx.fillText(txtCanvas, x, y);
     }
 }
@@ -139,14 +150,14 @@ function addTxtLine() {
     if (gMeme.txts[gChosenText].line !== '') {
         gChosenText++;
         addMeme();
-    }    
-    document.querySelector('.txt-user').value ='';
+    }
+    document.querySelector('.txt-user').value = '';
 }
 
 
 function changeFontSize(direction) {
     var currText = gMeme.txts[gChosenText];
-    direction === 'increase'? currText.size++ : currText.size--;
+    direction === 'increase' ? currText.size++ : currText.size--;
     renderTxt();
 }
 
@@ -156,30 +167,30 @@ function alignText(direction) {
         currText.align = direction;
         currText.x = 150;
     } else {
-        currText.y = (direction === 'bottom')? 250 : 50;
+        currText.y = (direction === 'bottom') ? 250 : 50;
     }
     renderTxt();
 }
 
 function moveText(direction) {
     var currText = gMeme.txts[gChosenText];
-    if (direction === 'right' || direction === 'left'){
-        currText.x = (direction === 'right')? currText.x - 5 : currText.x + 5;
+    if (direction === 'right' || direction === 'left') {
+        currText.x = (direction === 'right') ? currText.x - 5 : currText.x + 5;
     } else {
-        currText.y = (direction === 'down')? currText.y + 5 : currText.y - 5;
+        currText.y = (direction === 'down') ? currText.y + 5 : currText.y - 5;
     }
     renderTxt();
 }
 
 function changeFont(font) {
     gMeme.txts[gChosenText].font = font;
-    renderTxt();    
+    renderTxt();
 }
 
 function sddShadow() {
     if (gMeme.txts[gChosenText].shadow) {
         gMeme.txts[gChosenText].shadow = false;
-    }else {
+    } else {
         gMeme.txts[gChosenText].shadow = true;
     }
     renderTxt();
@@ -189,21 +200,21 @@ function getPosition(click) {
     var rect = gCanvas.getBoundingClientRect();
     var x = click.clientX - rect.left;
     var y = click.clientY - rect.top;
-    var chosenText = getTextIdx(x,y);    
+    var chosenText = getTextIdx(x, y);
     if (chosenText === null) return;
     gChosenText = chosenText;
     document.querySelector('.txt-user').value = gMeme.txts[gChosenText].line;
-    
+
 }
 
 function colorChange(val) {
-    gMeme.txts[gChosenText].color= val;
+    gMeme.txts[gChosenText].color = val;
     renderTxt();
 }
 
 function deleteMeme() {
     gMeme.txts.splice(gChosenText, 1);
-    if (gChosenText){
+    if (gChosenText) {
         var prevMeme = gMeme.txts[gChosenText - 1];
         document.querySelector('.txt-user').value = prevMeme.line;
         gChosenText--;
@@ -211,7 +222,7 @@ function deleteMeme() {
     renderTxt();
 }
 
-function markLine(x, y, currTextWidth,  height) {
+function markLine(x, y, currTextWidth, height) {
     var ctx = gCanvas.getContext("2d");
     ctx.rect(x, y, currTextWidth, height);
     ctx.fillStyle = 'rgba(240, 255, 255,0.377)';
@@ -220,17 +231,23 @@ function markLine(x, y, currTextWidth,  height) {
 
 
 
+function openGallery() {
+
+    document.querySelector('.cont-gallery').style.display = "block";
+    document.querySelector('.cont-editor').style.display = "none";
+    
+    // var gallery = document.querySelector('.cont-gallery');
+
+    // gallery.style.dispaly=none;
+
+    // gallery.classList.toggle('close-gallery');
+}
 
 
-
-
-
-
-
-
-
-
-
+function openEditorDom() {
+    document.querySelector('.cont-gallery').style.display = "none";
+    document.querySelector('.cont-editor').style.display = "block";   
+}
 
 
 

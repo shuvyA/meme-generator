@@ -22,6 +22,9 @@ function renderPhotos() {
 
 function openEditor(imgId) {
     createMeme(imgId);
+    
+    document.querySelector('.cont-gallery').style.display = "none";
+    document.querySelector('.cont-editor').style.display = "block";
     initEditor();
 }
 
