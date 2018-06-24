@@ -7,6 +7,14 @@
     font-family: eurof;
     src: url('../fonts/eurofurence/eurof55.ttf');
 }
+@font-face {
+    font-family: Quicksand;
+    src: url('../fonts/Quicksand/Quicksand-Medium.ttf');
+}
+@font-face {
+    font-family: Oswald;
+    src: url('../fonts/Oswald/Oswald-Regular.ttf');
+}
 
 @font-face {
     font-family: lato;
@@ -45,6 +53,14 @@ body {
 
 .wrap {
     flex-wrap: wrap;
+}
+
+.mesure-text {
+    position: absolute;
+    visibility: hidden;
+    height: auto;
+    width: auto;
+    white-space: nowrap;
 }
 
 /*header*/
@@ -145,4 +161,9 @@ footer {
     text-align: center;
 }
 
-
+#btnGroupDrop1 {
+    background-color: #EEEEEE;
+    color: black;
+    height: 31px;
+    margin: 0 0 3px 0;
+}

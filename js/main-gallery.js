@@ -4,7 +4,7 @@ function init() {
     gKeyWords = loadFromStorage(KEYWORDS);
     renderFilter();
     renderPhotos();
-    filterByWord();
+    renderWords();
 }
 
 function renderPhotos() {
@@ -21,7 +21,7 @@ function renderPhotos() {
 }
 
 function openEditor(imgId) {
-    gMeme.selectedImgId = imgId;
+    createMeme(imgId);
     initEditor();
 }
 
@@ -40,10 +40,11 @@ function filterPhotos() {
     if (keyWord === '' || keyWord === 'all' || !gKeyWords[keyWord]) return gImgs;
     gKeyWords[keyWord].searched++;
     saveToStorage(KEYWORDS, gKeyWords);
+    renderWords();
     return gKeyWords[keyWord].images;
 }
 
-function filterByWord() {
+function renderWords() {
     var strHTMLS = '';
     for (var word in gKeyWords) {
         var font = checkFont(word);
@@ -51,8 +52,6 @@ function filterByWord() {
             ${word}
         </li>`
     }
-    console.log(strHTMLS);
-    
     document.querySelector('.wordFilter').innerHTML = strHTMLS;
 }
 
