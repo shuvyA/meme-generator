@@ -101,6 +101,7 @@ function renderReset() {
 }
 
 function renderTxt() {
+     
     var txtFromUser = GetTxtFromUser();
     gMeme.txts[gChosenText].line = txtFromUser;
     
@@ -135,8 +136,10 @@ function downloadImg(elLink) {
 
 
 function addTxtLine() {
-    gChosenText++;
-    addMeme();
+    if (gMeme.txts[gChosenText].line !== '') {
+        gChosenText++;
+        addMeme();
+    }    
     document.querySelector('.txt-user').value ='';
 }
 
@@ -183,11 +186,12 @@ function sddShadow() {
 }
 
 function getPosition(click) {
-    // renderTxt();
     var rect = gCanvas.getBoundingClientRect();
     var x = click.clientX - rect.left;
     var y = click.clientY - rect.top;
-    gChosenText = getTextIdx(x,y);    
+    var chosenText = getTextIdx(x,y);    
+    if (chosenText === null) return;
+    gChosenText = chosenText;
     document.querySelector('.txt-user').value = gMeme.txts[gChosenText].line;
     
 }
@@ -198,7 +202,12 @@ function colorChange(val) {
 }
 
 function deleteMeme() {
-    gMeme.txts.splice(1, gChosenText);
+    gMeme.txts.splice(gChosenText, 1);
+    if (gChosenText){
+        var prevMeme = gMeme.txts[gChosenText - 1];
+        document.querySelector('.txt-user').value = prevMeme.line;
+        gChosenText--;
+    }
     renderTxt();
 }
 
