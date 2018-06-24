@@ -12,7 +12,9 @@ function renderPhotos() {
     var strHTMLS = '';
     images.forEach(function (img, idx) {
         strHTMLS += `
-        <div class='img-container flex'><img class="animated pulse" src="${img.url}" onclick = 'openEditor(${img.id})'></div>
+        <div class='img-container flex' onclick="javascript:location.href='#edit'">
+        
+        <img class="animated pulse" src="${img.url}" onclick = 'openEditor(${img.id})'></div>
         `
     });
     var imgContainer = document.querySelector('.the-gallery');

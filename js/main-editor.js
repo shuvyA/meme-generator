@@ -13,23 +13,27 @@ function initEditor() {
 function editorRender() {
 
     var strHtml = `
-    <div class="editor flex space-between flex-wrap">
+    <div>
+    <button class="btn-control" type="submit" onclick="openGallery()"><i class="far fa-times-circle"></i> Back to Gallery</button>
+   
+   </div>
+    <div class="editor flex space-between flex-wrap" id="edit">
     <div class="cont-canvas">
             <h2><i class="fas fa-edit"></i> Editor</h2>
             <canvas id="img-canvas" onclick = 'getPosition(event)'>
             </canvas>
     </div>
-            
- <div class="control-box">
-            <h2><i class="fas fa-cog"></i> Start to creator!</h2>
+    
+    <div class="control-box">
+    <h2><i class="fas fa-cog"></i> Start to creator!</h2>
             <div class="line-control">
             <input class="txt-user" type="text" oninput="renderTxt()" placeholder="write your meme">
             
             </div>
             <div class="line-control">
             <button class="btn-control" type="submit" onclick="addTxtLine()">Add-Line</button>
-            <button class="btn-control" type="submit" onclick="changeFontSize('increase')">+</button>
-            <button class="btn-control" type="submit" onclick="changeFontSize('decrease')">-</button>
+            <button class="btn-control" type="submit" onclick="changeFontSize('increase')"><i class="fas fa-search-plus"></i></button>
+            <button class="btn-control" type="submit" onclick="changeFontSize('decrease')"><i class="fas fa-search-minus"></i></button>
             
             </div>
             <div class="line-control">
@@ -52,13 +56,13 @@ function editorRender() {
                 <i class="fas fa-font"></i>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <a class="dropdown-item" href="" onclick = changeFont('eurof')>eurof</a>
-                    <a class="dropdown-item" href="" onclick = changeFont('lato')>lato</a>
-                    <a class="dropdown-item" href="" onclick = changeFont('Impact')>Impact</a>
-                    <a class="dropdown-item" href="" onclick = changeFont('Indie_Flower')>Indie_Flower</a>
-                    <a class="dropdown-item" href="" onclick = changeFont('Quicksand')>Quicksand</a>
-                    <a class="dropdown-item" href="" onclick = changeFont('Oswald')>Oswald</a>
-                    <a class="dropdown-item" href="" onclick = changeFont('san-serif')>san-serif</a>
+                    <div class="dropdown-item"  onclick = changeFont('eurof')>eurof</div>
+                    <div class="dropdown-item"  onclick = changeFont('lato')>lato</div>
+                    <div class="dropdown-item"  onclick = changeFont('Impact')>Impact</div>
+                    <div class="dropdown-item"  onclick = changeFont('Indie_Flower')>Indie_Flower</div>
+                    <div class="dropdown-item"  onclick = changeFont('Quicksand')>Quicksand</div>
+                    <div class="dropdown-item"  onclick = changeFont('Oswald')>Oswald</a>
+                    <div class="dropdown-item"  onclick = changeFont('san-serif')>san-serif</div>
                 </div>
             </div>
 
@@ -66,7 +70,7 @@ function editorRender() {
 
 
                 <button class="btn-control" type="submit" onclick="sddShadow()">shadow</button>
-                <input type="color" name="favcolor" value="#ff0000" onchange="colorChange(this.value)">
+                <input class= 'color-btn' type="color" name="favcolor" value="#ff0000" onchange="colorChange(this.value)">
                 
                 <button class="btn-control" type="submit" onclick="deleteMeme()">delete</button>  
                 
@@ -75,10 +79,6 @@ function editorRender() {
                 Download as jpeg
               </a>
               </div>
-              <div>
-              <button class="btn-control" type="submit" onclick="openGallery()"><i class="fas fa-undo-alt"></i> Back to Gallery</button>
-            
-            </div>
         </div>
     
     `;
@@ -240,19 +240,19 @@ function openGallery() {
 
     document.querySelector('.cont-gallery').style.display = "block";
     document.querySelector('.cont-editor').style.display = "none";
+
+    // document.querySelector('.cont-editor').href = "#galleryI";
     
-    // var gallery = document.querySelector('.cont-gallery');
-
-    // gallery.style.dispaly=none;
-
-    // gallery.classList.toggle('close-gallery');
 }
 
 
 function openEditorDom() {
     document.querySelector('.cont-gallery').style.display = "none";
-    document.querySelector('.cont-editor').style.display = "block";   
-}
+    document.querySelector('.cont-editor').style.display = "block"; 
+    // document.querySelector('body').href = "#edit"; 
+    // location.href='link.html  
+} 
+    
 
 
 
