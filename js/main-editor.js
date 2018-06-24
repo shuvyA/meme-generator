@@ -36,8 +36,8 @@ function editorRender() {
             </div>
             <div class="line-control">
             <button class="btn-control" type="submit" onclick="addTxtLine()">Add-Line</button>
-            <button class="btn-control" type="submit" onclick="changeFontSize('increase')"><i class="fas fa-search-plus"></i></button>
-            <button class="btn-control" type="submit" onclick="changeFontSize('decrease')"><i class="fas fa-search-minus"></i></button>
+            <button class="btn-control" type="submit" onclick="changeFontSize('increase')"><i class="fas fa-plus"></i></button>
+            <button class="btn-control" type="submit" onclick="changeFontSize('decrease')"><i class="fas fa-minus"></i></i></button>
             
             </div>
             <div class="line-control">
@@ -54,8 +54,8 @@ function editorRender() {
             <button class="btn-control" type="submit" onclick="moveText('left')"><i class="fas fa-angle-double-right"></i></button>
             
             </div>
-                 <div  class="btn-control btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <div  class=" btn-control btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class=" btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-font"></i>
                 </button>
 
@@ -75,7 +75,7 @@ function editorRender() {
 
 
                 <button class="btn-control" type="submit" onclick="sddShadow()">shadow</button>
-                <input class= 'color-btn' type="color" name="favcolor" value="#ff0000" onchange="colorChange(this.value)">
+                <input class= 'color-btn' type="color" name="favcolor" value="#ffffff" onchange="colorChange(this.value)">
                 
                 <button class="btn-control" type="submit" onclick="deleteMeme()">delete</button>  
                 
@@ -244,6 +244,7 @@ function markLine(x, y, currTextWidth, height) {
 function openGallery() {
 
     document.querySelector('.cont-gallery').style.display = "block";
+    document.querySelector('.cont-wordFilter').style.display = "block";
     document.querySelector('.cont-editor').style.display = "none";
 
     // document.querySelector('.cont-editor').href = "#galleryI";
@@ -253,6 +254,7 @@ function openGallery() {
 
 function openEditorDom() {
     document.querySelector('.cont-gallery').style.display = "none";
+    document.querySelector('.cont-wordFilter').style.display = "none";
     document.querySelector('.cont-editor').style.display = "block";
     // document.querySelector('body').href = "#edit"; 
     // location.href='link.html  
