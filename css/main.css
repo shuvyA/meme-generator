@@ -40,7 +40,9 @@ body {
     
 }
 
-a {
+
+
+a:hover {
     text-decoration: none;
 }
 /*helpers*/
@@ -243,7 +245,6 @@ margin-bottom: 15px;
 main {
     margin: 0 auto;
     max-width: 980px;
-    /* width: 100%; */
     margin-bottom: 20px;
     
 }
@@ -261,16 +262,17 @@ main {
     color: #0F243E;
     padding-top: 60px;
     padding-bottom: 50px;
-    /* max-width: 100vh; */
 
 
 }
 
-.cont-canvas {
-    /* padding: 10px; */
-    /* background-color: #323232; */
-    /* border: solid 1px #ffffff3b;
-    border-radius: 15px; */
+
+
+
+a h2 {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
 }
 
 .cont-canvas h2 {
