@@ -151,6 +151,7 @@ nav {
     margin: 0px;
     /* font-family: 'Indie_Flower','Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     font-family: 'eurof','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
 }
 
 .main-menu {
@@ -240,6 +241,7 @@ main {
     margin: 0 auto;
     max-width: 980px;
     /* width: 100%; */
+    margin-bottom: 20px;
     
 }
 
@@ -301,6 +303,8 @@ main {
     width: 100%;
     height: 40px;
     text-align: center;
+    padding: 10px;
+    margin:20px;
 }
 
 .line-control {
@@ -345,6 +349,7 @@ main {
 
 .search-box {
     justify-content: center;
+    margin:20px;
     
 }
 
@@ -400,16 +405,27 @@ background-color: #E0B62C;
     width: 100%;
     padding: 20px; 
     font-size: 1.5em;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .about {
-    /* background-color: #E0B62C; */
     margin: 0 auto;
+    color: #ffffff;
         max-width: 980px;
     }
 
 .about-container h2, section h2 {
     text-align: center;
+}
+
+
+.about-container img {
+    float: left;
+    max-width: 250px;
+    border-radius: 50%;
+    padding: 10px;
+    margin:30px;
 }
 
 .cont-wordFilter{
@@ -424,6 +440,20 @@ background-color: #E0B62C;
     padding: 0 50;
     margin: 0 auto;
     max-width: 980px;
+    color: #ffffff;
+}
+
+.cont-contact{
+    background-color:#82CADB;
+    width: 100%;
+    padding: 30px; 
+    font-size: 1.5em;
+}
+
+section{
+    padding: 0 50;
+    margin: 0 auto;
+    max-width: 580px;
 }
 
 
@@ -431,6 +461,10 @@ background-color: #E0B62C;
  
 
 @media (max-width: 800px) {
+
+    .con-head h1 {
+        padding-left: 10px;
+    }
 
     .toggle-menu-btn {
         display: block; 
@@ -442,7 +476,13 @@ background-color: #E0B62C;
             /* background-color: black; */
             display:block;
           }
+.main-menu{
 
+    z-index: 1;
+}
+.nav-mobile{
+    z-index: 1;
+}
 
     ul.main-menu {
         flex-direction: column;

@@ -67,6 +67,7 @@ function editorRender() {
                     <div class="dropdown-item"  onclick = changeFont('Oswald')>Oswald</a>
                     <div class="dropdown-item"  onclick = changeFont('san-serif')>san-serif</div>
                 </div>
+                </div>
             </div>
 
               
@@ -97,7 +98,7 @@ function editorRender() {
 function renderImg() {
     var imgUrl = getUrl()
     createCanvas(imgUrl);
-    
+
 }
 
 
@@ -127,17 +128,17 @@ function renderTxt() {
         ctx.fillStyle = color;
         ctx.textAlign = currText.align;
         if (!currText.shadow) {
-            ctx.shadowOffsetY=0;
-            ctx.shadowOffsetX=0;
+            ctx.shadowOffsetY = 0;
+            ctx.shadowOffsetX = 0;
         } else {
-            ctx.shadowOffsetY=3;
-            ctx.shadowOffsetX=3;
+            ctx.shadowOffsetY = 3;
+            ctx.shadowOffsetX = 3;
         }
-        ctx.shadowColor="grey";
+        ctx.shadowColor = "grey";
         ctx.fillText(txtCanvas, x, y);
     }
     console.log(gMeme);
-    
+
 }
 
 
@@ -170,7 +171,7 @@ function alignText(direction) {
         if (direction === 'start') currText.x = 0;
         if (direction === 'end') currText.x = currText.x = gCanvas.width;
     } else {
-        currText.y = (direction === 'bottom') ?gCanvas.height * 0.9 : gCanvas.height * 0.1;
+        currText.y = (direction === 'bottom') ? gCanvas.height * 0.9 : gCanvas.height * 0.1;
     }
     renderTxt();
 }
@@ -217,7 +218,7 @@ function colorChange(val) {
 
 function deleteMeme() {
     gMeme.txts.splice(gChosenText, 1);
-    if (gChosenText){
+    if (gChosenText) {
         gChosenText--;
         var prevMeme = gMeme.txts[gChosenText];
         document.querySelector('.txt-user').value = prevMeme.line;
@@ -226,10 +227,10 @@ function deleteMeme() {
         var nextMeme = gMeme.txts[gChosenText];
         document.querySelector('.txt-user').value = nextMeme.line;
         renderTxt();
-    }else{
+    } else {
         document.querySelector('.txt-user').value = '';
         renderImg();
-    }    
+    }
 }
 
 function markLine(x, y, currTextWidth, height) {
@@ -247,17 +248,17 @@ function openGallery() {
     document.querySelector('.cont-editor').style.display = "none";
 
     // document.querySelector('.cont-editor').href = "#galleryI";
-    
+
 }
 
 
 function openEditorDom() {
     document.querySelector('.cont-gallery').style.display = "none";
-    document.querySelector('.cont-editor').style.display = "block"; 
+    document.querySelector('.cont-editor').style.display = "block";
     // document.querySelector('body').href = "#edit"; 
     // location.href='link.html  
-} 
-    
+}
+
 
 
 
