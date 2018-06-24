@@ -54,7 +54,7 @@ function editorRender() {
                 <button type="submit" onclick="sddShadow()">shadow</button>
                 <input type="color" name="favcolor" value="#ff0000" onchange="colorChange(this.value)">
                 
-                <button type="submit" onclick="renderReset(idxLine)">Reset</button>  
+                <button type="submit" onclick="deleteMeme()">delete</button>  
                 
                 <div class="add-line"></div>
                 <a href="#" onclick="downloadImg(this)" download="my-img.jpg" >
@@ -171,11 +171,13 @@ function sddShadow() {
 }
 
 function getPosition(click) {
+    // renderTxt();
     var rect = gCanvas.getBoundingClientRect();
     var x = click.clientX - rect.left;
     var y = click.clientY - rect.top;
     gChosenText = getTextIdx(x,y);    
     document.querySelector('.txt-user').value = gMeme.txts[gChosenText].line;
+    
 }
 
 function colorChange(val) {
@@ -183,25 +185,25 @@ function colorChange(val) {
     renderTxt();
 }
 
-
-
-
-
-
-
-
-
-
-
-function deleteLine(lineIdx){
-
-console.log('del',lineIdx);
-// delete item of array
-gMeme.txts.splice(1,lineIdx);
-renderTxt();
-
-
+function deleteMeme() {
+    gMeme.txts.splice(1, gChosenText);
+    renderTxt();
 }
+
+function markLine(x, y, currTextWidth,  height) {
+    var ctx = gCanvas.getContext("2d");
+    ctx.rect(x, y, currTextWidth, height);
+    ctx.fillStyle = 'rgba(240, 255, 255,0.377)';
+    ctx.fill();
+}
+
+
+
+
+
+
+
+
 
 
 
