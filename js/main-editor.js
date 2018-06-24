@@ -41,33 +41,34 @@ function editorRender() {
             <button class="btn-control" type="submit" onclick="alignText('start')"><i class="fas fa-align-left"></i></button> 
             <button class="btn-control" type="submit" onclick="alignText('center')"><i class="fas fa-align-center"></i></button>
             <button class="btn-control" type="submit" onclick="alignText('end')"><i class="fas fa-align-right"></i></button>
-            <button  class="btn-control" type="submit" onclick="moveText('right')"><i class="fas fa-angle-double-left"></i></button>
-            <button class="btn-control" type="submit" onclick="moveText('left')"><i class="fas fa-angle-double-right"></i></button>
+            <button class="btn-control" type="submit" onclick="alignText('top')">&#8793</button>
+            <button class="btn-control" type="submit" onclick="alignText('bottom')">&#8794</button>
             </div>
             <div class="line-control">
             <button class="btn-control" type="submit" onclick="moveText('down')"><i class="fas fa-angle-double-down"></i></button>
             <button class="btn-control" type="submit" onclick="moveText('up')"><i class="fas fa-angle-double-up"></i></button>
+            <button  class="btn-control" type="submit" onclick="moveText('right')"><i class="fas fa-angle-double-left"></i></button>
+            <button class="btn-control" type="submit" onclick="moveText('left')"><i class="fas fa-angle-double-right"></i></button>
             
             </div>
 
-                <button class="btn-control" type="submit" onclick="alignText('top')">&#8793</button>
-                <button class="btn-control" type="submit" onclick="alignText('bottom')">&#8794</button>
 
+            <div class="line-control">
+            <div class="dropdown" onclick = 'openFonts()'>
+            <div><i class="fas fa-font"></i></div>
+  <div class="dropdown-content btn-control">
+    <p onclick = 'changeFont('eurof')'>Eurof</p>
+    <p onclick = 'changeFont('lato')'>Lato</p>
+    <p onclick = 'changeFont('Impact')'>Impact</p>
+    <p onclick = 'changeFont('Indie_Flower')'>Indie Flower</p>
+    <p onclick = 'changeFont('Quicksand')'>Quicksand</p>
+    <p onclick = 'changeFont('Oswald')'>Oswald</p>
+    <p onclick = 'changeFont('san-serif')'>San-Serif</p>
+    
+  </div>
+</div>
 
-                <div  class="btn-group" role="group">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-font"></i>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <div class="dropdown-item"  onclick = changeFont('eurof')>eurof</div>
-                    <div class="dropdown-item"  onclick = changeFont('lato')>lato</div>
-                    <div class="dropdown-item"  onclick = changeFont('Impact')>Impact</div>
-                    <div class="dropdown-item"  onclick = changeFont('Indie_Flower')>Indie_Flower</div>
-                    <div class="dropdown-item"  onclick = changeFont('Quicksand')>Quicksand</div>
-                    <div class="dropdown-item"  onclick = changeFont('Oswald')>Oswald</a>
-                    <div class="dropdown-item"  onclick = changeFont('san-serif')>san-serif</div>
-                </div>
-            </div>
+                
 
               
 
@@ -84,6 +85,7 @@ function editorRender() {
               </a>
                 </div>
                 
+              </div>
               </div>
         </div>
     
@@ -187,6 +189,8 @@ function moveText(direction) {
 
 function changeFont(font) {
     gMeme.txts[gChosenText].font = font;
+    var elFonts = document.querySelector('.dropdown-content');
+    elFonts.style.display = 'none';
     renderTxt();
 }
 
@@ -258,7 +262,10 @@ function openEditorDom() {
     // location.href='link.html  
 } 
     
-
+function openFonts() {
+    var elFonts = document.querySelector('.dropdown-content');
+    elFonts.style.display = 'block';
+}
 
 
 
