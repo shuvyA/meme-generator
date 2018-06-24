@@ -4,7 +4,7 @@ var gMeme = {
     selectedImgId: '4',
     txts: [
         {
-            line: 'I never eat Falafel',
+            line: '',
             size: 20,
             align: 'center',
             color: 'red'

@@ -19,7 +19,7 @@ function editorRender() {
         <h1>editor-canvas</h1>
 
 
-        <div class="container">
+        <div class="container flex space-between flex-wrap">
 
             <canvas id="img-canvas">
             </canvas>
@@ -27,20 +27,20 @@ function editorRender() {
                 <input class="txt-user${gIdxLine}" type="text" oninput="renderTxt()" placeholder="give a text">
 
                 <button type="submit" onclick="addTxtLine()">Add-Line</button>
-                <button type="submit" onclick="fontSizeUp()">+</button>
-                <button type="submit" onclick="fontSizeDown()">-</button>
+                <button type="submit" onclick="fontSizeUp(${gIdxLine})">+</button>
+                <button type="submit" onclick="fontSizeDown(${gIdxLine})">-</button>
                 <input type="color" name="favcolor" value="#ff0000" onchange="colorChange(this.value,${gIdxLine})">
                 
+                <button type="submit" onclick="renderReset(idxLine)">Reset</button>  
                 
                 <div class="add-line"></div>
                 <a href="#" onclick="downloadImg(this)" download="my-img.jpg" >
                 Download as jpeg
-              </a>
-            </div>
-        </div>
-    
-    `;
-{/* <button type="submit" onclick="renderReset(idxLine)">Reset</button> */}
+                </a>
+                </div>
+                </div>
+                
+                `;
 
     document.querySelector('.editor-canvas').innerHTML = strHtml;
 
@@ -58,7 +58,17 @@ function renderImg() {
     var img = new Image();
     img.src = imgUrl;
 
-    ctx.drawImage(img, 0, 0, 300, 300);
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    if (img.height > 350) {
+
+        var ratio = canvas.height / 300;
+        canvas.height = 300;
+        canvas.width = canvas.width / ratio;
+
+    }
+    ctx.drawImage(img, 0, 0);
 }
 
 
@@ -72,7 +82,9 @@ function GetTxtFromUser(idxLine) {
 // To do fix clean img 
 function renderReset() {
     renderImg();
-    document.querySelector(`.txt-user${gIdxLine}`).value;
+    gMeme.txts = [];
+    renderTxt();
+    // document.querySelector(`.txt-user${gIdxLine}`).value;
 }
 
 function renderTxt(idxLine) {
@@ -89,11 +101,8 @@ function renderTxt(idxLine) {
         var fontSize = gMeme.txts[i].size;
         var color = gMeme.txts[i].color;
 
-
-
         var ctx = canvas.getContext("2d");
-        ctx.font = fontSize + 'px sans-serif';
-        // ctx.font = getFont();
+        ctx.font = fontSize + 'px sans-serif'; // to do font
         // ctx.font = "15px Comic Sans MS";
 
 
@@ -127,11 +136,11 @@ function addTxtLine() {
         align: 'left',
         color: 'red'
     }
-//to do fn obj
+    //to do fn obj
     cuurTxt.push(obj);
 
     gMeme.txts[gIdxLine].size = '30';
-    gMeme.txts[gIdxLine].color = 'blue';
+    // gMeme.txts[gIdxLine].color = 'blue';
     var prevTxt = '';
 
     // render inputs-->>
@@ -144,6 +153,9 @@ function addTxtLine() {
         <button type="submit" onclick="alignText(${i}, 'right')"><i class="fas fa-align-left"></i></button> 
         <button type="submit" onclick="alignText(${i}, 'center')"><i class="fas fa-align-center"></i></button>
         <button type="submit" onclick="alignText(${i}, 'left')"><i class="fas fa-align-right"></i></button>
+        <input type="color" name="favcolor" value="#ff0000" onchange="colorChange(this.value,${gIdxLine})">
+        <button type="submit" onclick="deleteLine(${i})">Delete Line</button>
+        
         `;
     }
 
@@ -158,103 +170,200 @@ function addTxtLine() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function fontSizeDown(idxLine) {
     console.log('down size');
     gMeme.txts[idxLine].size--;
+    renderTxt();
 }
 
 function fontSizeUp(idxLine) {
     console.log('up size');
     gMeme.txts[idxLine].size++;
+    renderTxt();
+}
+
+function colorChange(val, lineIdx) {
+
+    gMeme.txts[lineIdx].color= val;
+    renderTxt();
+
+    // console.log(val);
 
 }
 
-function colorChange(val,lineIdx){
+function deleteLine(lineIdx){
 
-    console.log(val);
+console.log('del',lineIdx);
+// delete item of array
+gMeme.txts.splice(1,lineIdx);
+renderTxt();
+
+
+
+//del line in dom
 
 }
 
 
 
+function renderImg() {
+    var currImgIdx = getImgfromSelctId();
 
+    var imgUrl = gImgs[currImgIdx].url;
 
+    canvas.width = 300;
+    canvas.height = 300;
+    var ctx = canvas.getContext("2d");
+    var img = new Image();
+    img.src = imgUrl;
 
+    canvas.width = img.width;
+    canvas.height = img.height;
 
+    if (img.height > 350) {
 
+        var ratio = canvas.height / 300;
+        canvas.height = 300;
+        canvas.width = canvas.width / ratio;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function alignText(lineIdx, direction) {
-    gMeme.txts[lineIdx].align = direction;
-    renderTxt(lineIdx);
+    }
+    ctx.drawImage(img, 0, 0);
 }
 
 
 
 
-// function fontLeft(lineIdx) {
 
-// }
 
-// function fontSizeRight(lineIdx) {
 
-// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

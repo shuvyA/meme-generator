@@ -13,9 +13,12 @@
 </head>
 
 <body onload="init()">
-    <header>
-        <nav class="flex ">
+        <div class="toggle-menu-screen screen" onclick="openNavMobile(this)" alt="toggle main menu"></div>
+
+    <header >
+        <div class="con-head flex space-between align-center">
             <h1>meme generator</h1>
+        <nav >
             <ul class="main-menu clean-list flex">
                 <li>
                     <a href="#">gallery</a>
@@ -31,13 +34,20 @@
             </ul>
 
         </nav>
+          <!-- Mobile-nav -->
+          <div class="nav-mobile" onclick="openNavMobile(this)">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+        </div>
     </header>
-
+    
     <main>
 
 
-        <!-- <div class="container">  -->
 <div class="editor-canvas">
+    <h2>search</h2>
         <div class="search-box flex">
             <input list="browsers" name="browser" onchange='renderPhotos()'>
             <datalist id="browsers">
@@ -47,7 +57,8 @@
         </div>
 
 
-        
+        <h2>The gallery</h2>
+
             <div class="the-gallery clean-list flex">
 
             </div>
@@ -58,7 +69,6 @@
                 </ul>
             </div>
         </div>
-        <!-- </div> -->
     </main>
 
     <footer>
