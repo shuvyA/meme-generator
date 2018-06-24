@@ -7,7 +7,7 @@ function createMeme() {
             line: '',
             size: 30,
             align: 'center',
-            color: 'black',
+            color: 'white',
             font: 'impact',
             x: gCanvas.width / 2,
             y: checkHeight(),
@@ -47,25 +47,6 @@ function createCanvas(imgUrl) {
     ctx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
 
-function addMeme() {
-    // if (!gMeme.txts) firstMeme(); return;
-    if (gMeme.txts.length === 1) secondMeme(); return;
-    var lastMeme = gMeme.txts.length - 1;
-    lastMeme = lastMeme + lastMeme % 1;
-    var newY = gMeme.txts[lastMeme].y + 30;
-    var newMeme = {
-        line: '',
-        size: 30,
-        align: 'center',
-        color: 'black',
-        font: 'impact',
-        x: 150,
-        y: newY,
-        shadow: true,
-        chosen:false
-    }
-    gMeme.txts.push(newMeme);
-}
 
 function getTextIdx(x, y) {
     var chosenText = null;
