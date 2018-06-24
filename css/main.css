@@ -546,3 +546,14 @@ section{
 
 }
 
+
+
+@media (max-width: 440px){
+.text-cover h1 {
+
+    font-size: 3em;
+}
+
+}
+
+
