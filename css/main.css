@@ -186,6 +186,7 @@ nav {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-bottom: 20px;
 }
 
 .text-cover h1{
@@ -368,6 +369,10 @@ main {
     justify-self: center;
 }
 
+
+
+
+
 .wordFilter {
     justify-content: center;
     margin: 20px 0 20px 0;
@@ -379,14 +384,23 @@ main {
 }
 
 /*footer*/
-footer {
-    max-width: 80%;
-    margin: 0 auto;
-}
+
 .about-container {
+background-color: #E0B62C;
+    width: 100%;
+    padding: 20px; 
     font-size: 1.5em;
-    margin: 0 0 50px 0;
 }
+
+.about {
+    /* background-color: #E0B62C; */
+    margin: 0 auto;
+        max-width: 980px;
+    }
+footer {
+    max-width: 100%;
+}
+
 .about-container h2, section h2 {
     text-align: center;
 }
