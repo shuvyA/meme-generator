@@ -391,6 +391,9 @@ main {
 }
 
 /*footer*/
+footer {
+    max-width: 100%;
+}
 
 .about-container {
 background-color: #E0B62C;
@@ -404,12 +407,23 @@ background-color: #E0B62C;
     margin: 0 auto;
         max-width: 980px;
     }
-footer {
-    max-width: 100%;
-}
 
 .about-container h2, section h2 {
     text-align: center;
+}
+
+.cont-wordFilter{
+    background-color:#82CADB;
+    width: 100%;
+    padding: 20px; 
+    font-size: 1.5em;
+
+}
+
+.wordFilter {
+    padding: 0 50;
+    margin: 0 auto;
+    max-width: 980px;
 }
 
 
