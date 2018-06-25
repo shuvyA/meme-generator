@@ -10,7 +10,7 @@ function createMeme() {
             color: 'white',
             font: 'impact',
             x: gCanvas.width / 2,
-            y: checkHeight(),
+            y: checkImgHeight(),
             shadow: true,
             chosen:false
 }
@@ -101,7 +101,7 @@ function secondMeme() {
     
 }
 
-function checkHeight() {
+function checkImgHeight() {
     if (gMeme.txts.length === 0) return gCanvas.height * 0.1; 
     if (gMeme.txts.length === 1) return gCanvas.height * 0.9;
     if (gMeme.txts.length === 2) return gMeme.txts[0].y + 30;

@@ -134,8 +134,6 @@ function renderTxt() {
         ctx.shadowColor = "black";
         ctx.fillText(txtCanvas, x, y);
     }
-    console.log(gMeme);
-
 }
 
 
@@ -164,7 +162,7 @@ function alignText(direction) {
     var currText = gMeme.txts[gChosenText];
     if (direction === 'start' || direction === 'end' || direction === 'center') {
         currText.align = direction;
-        if (direction === 'center') currText.x = 150;
+        if (direction === 'center') currText.x = gCanvas.width / 2;
         if (direction === 'start') currText.x = 0;
         if (direction === 'end') currText.x = currText.x = gCanvas.width;
     } else {
@@ -232,7 +230,7 @@ function deleteMeme() {
 
 function markLine(x, y, currTextWidth, height) {
     var ctx = gCanvas.getContext("2d");
-    ctx.rect(x, y, currTextWidth, height);
+    ctx.rect(x - 3, y +5, currTextWidth + 3, height);
     ctx.fillStyle = 'rgba(240, 255, 255,0.377)';
     ctx.fill();
 }
@@ -244,9 +242,6 @@ function openGallery() {
     document.querySelector('.cont-gallery').style.display = "block";
     document.querySelector('.cont-wordFilter').style.display = "block";
     document.querySelector('.cont-editor').style.display = "none";
-
-    // document.querySelector('.cont-editor').href = "#galleryI";
-
 }
 
 
@@ -254,8 +249,7 @@ function openEditorDom() {
     document.querySelector('.cont-gallery').style.display = "none";
     document.querySelector('.cont-wordFilter').style.display = "none";
     document.querySelector('.cont-editor').style.display = "block";
-    // document.querySelector('body').href = "#edit"; 
-    // location.href='link.html  
+    
 }
 
 
